@@ -33,7 +33,7 @@ python -m ledger diff
 python -m ledger evidence --period 2026-10-18 --field btc_held
 ```
 
-Observed: **45 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
+Observed: **54 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
 
 `build --refresh` opts into live discovery and needs an identifying `SEC_USER_AGENT` containing a contact email. It does not rewrite frozen shards until `snapshot` is explicitly run. SEC failures or changed hashes refuse; no substitute data is generated. For consumer pins and trust boundaries, see the [v1 dependency contract](docs/dependency-contract.md).
 
@@ -44,6 +44,15 @@ UV_CACHE_DIR=$HOME/scratch/strategy-8k-ledger/uvcache uv run --with playwright==
 ```
 
 The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts; system sans-serif is the fallback. The generated PNG above is committed; SVG/HTML exports can be rebuilt locally. The chart is reviewed at 1200×850; the dense 400px overview needs zoom.
+
+`trace` selects weekly or instrument evidence; `compare` reports explicit period
+pairs and independently replayed filings, retaining both sides and missing values.
+See the [five-minute walkthrough and revision limits](docs/trace-compare.md).
+
+```bash
+python -m ledger compare --against-period 2026-10-11 --period 2026-10-18 --field btc_held
+python -m ledger trace --period 2026-10-18 --ticker MSTR --action atm_sale --field amount_usd
+```
 
 ## Repository layout
 

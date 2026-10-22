@@ -55,6 +55,25 @@ def parse_filing(f):
     return url, 'EX-99.1', parse_document(edgar.fetch_text(url), f"{f['accession']} ({url})")
 
 
+def normalize_filing(f, url, role, p):
+    """Normalize one parsed filing without selecting or publishing revisions."""
+    weeks, insts = [], []
+    base = {'accession': f['accession'], 'form': f['form'], 'filed': f['filed'], 'doc_url': url, 'doc_role': role}
+    for w in p.weeks:
+        atm = [i for i in p.instruments if i.action == 'atm_sale' and i.period_end == w.period_end]
+        bb = [i for i in p.instruments if i.action == 'buyback' and i.period_end == w.period_end]
+        row = dict(base, fetched_utc=edgar.fetched_at(url), **{k: getattr(w, k) for k in Week.__dataclass_fields__})
+        row['atm_net_proceeds_usd'] = sum((i.amount_usd or 0 for i in atm if i.currency == 'USD'), Decimal(0)) \
+            if atm else (Decimal(0) if w.atm_no_sales_stated else None)
+        row['buyback_usd'] = sum((i.amount_usd or 0 for i in bb if i.currency == 'USD'), Decimal(0)) if bb else None
+        weeks.append(row)
+    for i in p.instruments:
+        start = i.period_start or next((w.period_start for w in p.weeks if w.period_end == i.period_end), None)
+        insts.append(dict(base, **{k: getattr(i, k) for k in Instrument.__dataclass_fields__ if k != 'period_start'},
+                          period_start=start))
+    return weeks, insts
+
+
 def build(refresh=False):
     filings = edgar.filings(since=SINCE, refresh=refresh)
     weeks, insts, log = [], [], []
@@ -65,24 +84,15 @@ def build(refresh=False):
         except NotWeekly as e:
             log.append(dict(f, status='not_weekly', doc_url='', weeks='', note=str(e)))
             continue
-        base = {'accession': f['accession'], 'form': f['form'], 'filed': f['filed'], 'doc_url': url, 'doc_role': role}
         for w in p.weeks:
             if w.period_end in period_sources:
                 raise UnknownLayout(f'duplicate economic period {w.period_end}: '
                                     f'{period_sources[w.period_end]} and {f["accession"]}; '
                                     'review amendment/restatement before rebuilding')
             period_sources[w.period_end] = f['accession']
-            atm = [i for i in p.instruments if i.action == 'atm_sale' and i.period_end == w.period_end]
-            bb = [i for i in p.instruments if i.action == 'buyback' and i.period_end == w.period_end]
-            row = dict(base, fetched_utc=edgar.fetched_at(url), **{k: getattr(w, k) for k in Week.__dataclass_fields__})
-            row['atm_net_proceeds_usd'] = sum((i.amount_usd or 0 for i in atm if i.currency == 'USD'), Decimal(0)) \
-                if atm else (Decimal(0) if w.atm_no_sales_stated else None)
-            row['buyback_usd'] = sum((i.amount_usd or 0 for i in bb if i.currency == 'USD'), Decimal(0)) if bb else None
-            weeks.append(row)
-        for i in p.instruments:
-            start = i.period_start or next((w.period_start for w in p.weeks if w.period_end == i.period_end), None)
-            insts.append(dict(base, **{k: getattr(i, k) for k in Instrument.__dataclass_fields__ if k != 'period_start'},
-                              period_start=start))
+        filing_weeks, filing_insts = normalize_filing(f, url, role, p)
+        weeks.extend(filing_weeks)
+        insts.extend(filing_insts)
         log.append(dict(f, status='weekly', doc_url=url, weeks=';'.join(w.period_end for w in p.weeks),
                         note='; '.join(p.notes)))
     weeks.sort(key=lambda r: (r['period_end'], r['filed'], r['accession']))

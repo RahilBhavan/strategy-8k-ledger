@@ -4,12 +4,25 @@ import argparse
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog='python -m ledger', description=__doc__)
-    ap.add_argument('command', choices=['build', 'check', 'diff', 'shares', 'chart', 'all', 'snapshot', 'restore', 'hydrate', 'evidence'])
+    ap.add_argument('command', choices=['build', 'check', 'diff', 'shares', 'chart', 'all', 'snapshot', 'restore', 'hydrate', 'evidence', 'trace', 'compare'])
     ap.add_argument('--refresh', action='store_true', help='re-download the EDGAR submissions index first')
-    ap.add_argument('--accession', help='diff: compare this filing instead of the latest')
+    ap.add_argument('--accession', help='diff: target filing; trace/compare: replay cached target filing')
     ap.add_argument('--field', default='btc_held')
     ap.add_argument('--period', help='evidence: exact period-end date')
+    ap.add_argument('--against-period', help='compare: before period-end date')
+    ap.add_argument('--against-accession', help='compare: independently replay before filing')
+    ap.add_argument('--ticker', help='trace/compare: instrument ticker (otherwise weekly field)')
+    ap.add_argument('--action', choices=['atm_sale', 'buyback'])
+    ap.add_argument('--program', help='exact instrument program label; required if ambiguous')
     a = ap.parse_args(argv)
+    if a.command in ('trace', 'compare'):
+        import json
+        from . import report
+        try:
+            print(json.dumps(report.run(a), indent=2))
+        except (ValueError, OSError) as e:
+            ap.error(str(e))
+        return 0
     from . import build, checks, diff, shares
     if a.command in ('snapshot', 'restore', 'hydrate'):
         from . import freeze

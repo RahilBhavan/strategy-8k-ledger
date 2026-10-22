@@ -9,6 +9,6 @@ Persistent objective was confirmed active by `create_goal` on this thread: corre
 - [x] Add pinned, least-permission offline CI and v1.0.0 hash contract.
 - [x] Clean scratch-copy CLI/tests/demo and portable chart render; inspect figure.
 - [x] Inspect tracked content and reachable history; no credential/private-artifact matches; source archive provenance verified.
-- [ ] Publish reviewed commit to authorized public repo and notify consumer owners of the pin.
-- [ ] Verify remote default branch/commit, remote clean clone and passing GitHub CI.
-- [ ] Save completed publication receipt and complete persistent goal.
+- [x] Publish reviewed commit to authorized public repo and notify consumer owners of the pin.
+- [x] Verify remote default branch/commit, remote clean clone and passing GitHub CI.
+- [x] Save completed publication receipt; the owning thread records goal completion after final receipt-tip checks.

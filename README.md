@@ -1,5 +1,7 @@
 # Strategy 8-K ledger: trace weekly treasury fields to SEC filings
 
+[![CI](https://github.com/RahilBhavan/strategy-8k-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/RahilBhavan/strategy-8k-ledger/actions/workflows/ci.yml)
+
 ![Strategy purchased 267 BTC in the latest period; only five early periods have same-date filed denominators for sats per basic share.](figures/sunday-tracker@2x.png)
 
 A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining capacity, repurchases and disclosed USD balances. The frozen corpus contains 97 period rows from 93 weekly updates, through the October 19, 2026 filing. Values retain source URLs and dates; consistency checks expose rounding exceptions instead of silently correcting them.
@@ -65,6 +67,7 @@ The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts; syst
 - [Verification](docs/verification.md): exact checks and artifact limits.
 - [Dependency contract](docs/dependency-contract.md): versioned columns, hashes and consumer pins.
 - [Review](docs/review.md): proven fixes and remaining limits.
+- [Publication](docs/publication.md): public source pin, fresh-clone and CI evidence.
 
 ## Sources
 

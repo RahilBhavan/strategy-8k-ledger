@@ -4,6 +4,8 @@
 
 ![Strategy purchased 267 BTC in the latest period; only five early periods have same-date filed denominators for sats per basic share.](figures/sunday-tracker@2x.png)
 
+The sats/share table stops at February 23, 2025: weekly 8-Ks printed a same-date basic share count only in January–February 2025, so later ratios are not computed.
+
 A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining capacity, repurchases and disclosed USD balances. The frozen corpus contains 97 period rows from 93 weekly updates, through the October 19, 2026 filing. Values retain source URLs and dates; consistency checks expose rounding exceptions instead of silently correcting them.
 
 ## What it does
@@ -15,7 +17,7 @@ A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining c
 
 ## How it works
 
-`ledger/edgar.py` caches source bytes with a SHA-256 manifest. Strict prose/table readers reject unknown layouts; `build.py` writes CSVs, `checks.py` reconciles them and `evidence.py` supplies numbered normalized source sections per field. Small `data/frozen/` shards preserve outputs and the manifest in Git; a 3.9 MB archive preserves all 184 original public source resources for offline hydration. `data/contract.json` pins table, manifest and archive hashes.
+`ledger/edgar.py` caches source bytes with a SHA-256 manifest. Strict prose/table readers reject unknown layouts; `build.py` writes CSVs, `checks.py` reconciles them and `evidence.py` supplies numbered normalized source sections per field. Small `data/frozen/` shards (the output CSVs and manifest, split into 16-row files that stay under the repository's file-size cap) preserve the reviewed outputs. A 3.9 MB archive preserves all 184 original public source resources; `hydrate` unpacks them into the local cache and checks each hash, so evidence works offline. `data/contract.json` is the dependency contract: it pins the table, manifest and archive hashes that downstream tools check.
 
 ## Run it
 
@@ -33,7 +35,35 @@ python -m ledger diff
 python -m ledger evidence --period 2026-10-18 --field btc_held
 ```
 
-Observed: **54 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
+`restore` rebuilds the CSVs from the frozen shards; `hydrate` unpacks the original filings into `data/raw/`. The evidence command prints a short answer; add `--json` for every source line and hash:
+
+```text
+btc_held = 848,517 BTC
+  period   2026-10-12 to 2026-10-18
+  source   https://www.sec.gov/Archives/edgar/data/1050446/000119312526424688/mstr-20261019.htm
+  filing   accession 0001193125-26-424688, filed 2026-10-19; sha256 758fffb5bae0...
+  locator  normalized lines 50-57, 77-78, 82
+  value at line 55: 267 | 22.1 | 82,900 | 848,517 | 64.02 | 75,446
+```
+
+`python -m ledger periods` lists the 97 valid `--period` dates (period end dates) and `python -m ledger fields` lists field names with units. A date that is not a period end gets an error naming the period that contains it.
+
+`diff` summarizes the latest filing against the prior week (excerpt):
+
+```text
+Strategy weekly 8-K 0001193125-26-424688, filed 2026-10-19
+  period: 2026-10-12 to 2026-10-18
+Bitcoin
+  held          848,250 -> 848,517 BTC (+267)
+  acquired      267 BTC for $22.1M
+  roll check    848,250 + 267 - 0 = 848,517; stated 848,517 OK
+  USD Reserve   $4.88B -> $4.83B (-$50.0M)
+ATM sales (net proceeds; capacity = remaining "available for issuance and sale")
+  MSTR  sold 140,872 shares for $22.0M; capacity $18.81B -> $18.79B (-$22.0M)
+Consistency checks for this filing: all OK
+```
+
+Observed: **58 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
 
 `build --refresh` opts into live discovery and needs an identifying `SEC_USER_AGENT` containing a contact email. It does not rewrite frozen shards until `snapshot` is explicitly run. SEC failures or changed hashes refuse; no substitute data is generated. For consumer pins and trust boundaries, see the [v1 dependency contract](docs/dependency-contract.md).
 

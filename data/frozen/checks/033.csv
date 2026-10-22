@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-10-04,0001193125-26-413164,cost_basis_roll,OK,63970000000,63978700000,-8700000,10050000,
+2026-10-04,0001193125-26-413164,pref_buyback_roll,OK,547200000,547200000,0,100000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-10-04,0001193125-26-413164,atm_total,OK,15700000,15700000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-10-11,0001193125-26-419726,roll,OK,848250,848250,0,0,
+2026-10-11,0001193125-26-419726,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-10-11,0001193125-26-419726,avg_cost_basis,OK,75444,75449.5,-5.5,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-10-11,0001193125-26-419726,avg_purchase_price,OK,86194,86000,194,373.4,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-10-11,0001193125-26-419726,cost_basis_roll,OK,64000000000,63991500000,8500000,10050000,
+2026-10-11,0001193125-26-419726,pref_buyback_roll,OK,354800000,354800000,0,100000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-10-11,0001193125-26-419726,atm_total,OK,21000000,21000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-10-18,0001193125-26-424688,roll,OK,848517,848517,0,0,
+2026-10-18,0001193125-26-424688,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-10-18,0001193125-26-424688,avg_cost_basis,OK,75446,75449.3,-3.3,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-10-18,0001193125-26-424688,avg_purchase_price,OK,82900,82771.5,128.5,343.5,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-10-18,0001193125-26-424688,cost_basis_roll,OK,64020000000,64022100000,-2100000,10050000,
+2026-10-18,0001193125-26-424688,pref_buyback_roll,OK,1160000000,1161700000,-1700000,5050000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period

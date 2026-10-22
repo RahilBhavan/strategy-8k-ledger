@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-08-02,0001193125-26-329565,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-08-02,0001193125-26-329565,avg_cost_basis,OK,75419,75415.2,3.8,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-08-02,0001193125-26-329565,avg_purchase_price,OK,63957,63937.7,19.3,23.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-08-02,0001193125-26-329565,cost_basis_roll,INFO,63510000000,63566370312,-56370312,10000000,"sale week: stated basis fell by $180M for 1,638 BTC sold = $109,890 per BTC (+/- $6,105 from printed precision) vs prior average cost $75,476; above average cost beyond print precision, so higher-cost lots appear to have been relieved (inference)"
+2026-08-02,0001193125-26-329565,pref_buyback_roll,OK,893800000,893800000,0,100000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-08-02,0001193125-26-329565,atm_total,OK,290600000,290600000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-08-09,0001193125-26-341297,roll,KNOWN_EXCEPTION,840447,840448,-1,0,"reverts the 2026-08-02 residual: 842,138 - 1,690 sold = 840,448; 8-K states 840,447"
+2026-08-09,0001193125-26-341297,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-08-09,0001193125-26-341297,avg_cost_basis,OK,75385,75388.5,-3.5,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-08-09,0001193125-26-341297,avg_purchase_price,OK,64262,64260.4,1.6,49.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-08-09,0001193125-26-341297,cost_basis_roll,INFO,63360000000,63382541890,-22541890,10000000,"sale week: stated basis fell by $150M for 1,690 BTC sold = $88,757 per BTC (+/- $5,917 from printed precision) vs prior average cost $75,419; above average cost beyond print precision, so higher-cost lots appear to have been relieved (inference)"
+2026-08-09,0001193125-26-341297,pref_buyback_roll,OK,785200000,785200000,0,100000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-08-09,0001193125-26-341297,atm_total,OK,653100000,653100000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-08-16,0001193125-26-353240,roll,OK,840447,840447,0,0,
+2026-08-16,0001193125-26-353240,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-08-16,0001193125-26-353240,avg_cost_basis,OK,75385,75388.5,-3.5,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"

@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-09-07,0001193125-26-384402,roll,OK,845050,845050,0,0,
+2026-09-07,0001193125-26-384402,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-09-07,0001193125-26-384402,avg_cost_basis,OK,75412,75415.7,-3.7,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-09-07,0001193125-26-384402,cost_basis_roll,OK,63730000000,63730000000,0,10000000,
+2026-09-07,0001193125-26-384402,pref_buyback_roll,OK,1190000000,1188500000,1500000,5050000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-09-13,0001193125-26-389858,roll,OK,845050,845050,0,0,
+2026-09-13,0001193125-26-389858,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-09-13,0001193125-26-389858,avg_cost_basis,OK,75412,75415.7,-3.7,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-09-13,0001193125-26-389858,cost_basis_roll,OK,63730000000,63730000000,0,10000000,
+2026-09-13,0001193125-26-389858,pref_buyback_roll,OK,1050000000,1050700000,-700000,5050000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period
+2026-09-20,0001193125-26-396093,roll,OK,846000,846000,0,0,
+2026-09-20,0001193125-26-396093,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-09-20,0001193125-26-396093,avg_cost_basis,OK,75416,75413.7,2.3,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-09-20,0001193125-26-396093,avg_purchase_price,OK,79670,79684.2,-14.2,95.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-09-20,0001193125-26-396093,cost_basis_roll,OK,63800000000,63805700000,-5700000,10050000,
+2026-09-20,0001193125-26-396093,pref_buyback_roll,OK,875100000,876000000,-900000,5050000,remaining authorization vs prior remaining + stated increase - preferred buybacks this period

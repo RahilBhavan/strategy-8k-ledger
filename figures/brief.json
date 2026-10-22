@@ -1,0 +1,61 @@
+{
+  "id": "strategy-sunday-tracker",
+  "template": "rahil-design-landscape",
+  "reader": "Engineer reviewing the local Strategy ledger on desktop",
+  "decision": "Check period purchases and whether the denominator supports a per-share calculation",
+  "point": "267 BTC were purchased in the latest period; sats/share has only 5 same-date filed denominators",
+  "comparison": "BTC purchases and sales across 97 reported periods; 5 sourced per-share observations",
+  "title": "267 BTC purchased in latest period",
+  "subtitle": "Period 2026-10-12 to 2026-10-18 \u00b7 848,517 BTC held",
+  "caption": "Sats per basic share \u00b7 only same-date denominators printed in weekly filings",
+  "form": "bar",
+  "values_count": 199,
+  "shape_reason": "97 periods show changes in purchase magnitude and sale weeks; the 5 ratios use a table",
+  "encodings": [
+    {
+      "mark": "bar",
+      "baseline": 0,
+      "axis_min": -2225,
+      "axis_min_labeled": false,
+      "scale": "linear",
+      "scale_labeled": true,
+      "series": 2,
+      "lie_factor": 1.0
+    }
+  ],
+  "accents": 1,
+  "accent_meaning": "title-value",
+  "estimates": {
+    "present": false,
+    "labeled": false
+  },
+  "illustration": false,
+  "illustration_labeled": false,
+  "compare_with": [],
+  "sources": [
+    {
+      "title": "Strategy weekly 8-Ks, CIK 1050446, frozen CSV URLs and manifest hashes",
+      "url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526424688/mstr-20261019.htm",
+      "as_of": "2026-10-19"
+    }
+  ],
+  "alt": "Strategy period purchases and sales from 2025-01-05 to 2026-10-18. Latest purchase 267 BTC; holdings 848517 BTC. Sats per basic share are shown only for 5 same-date filed denominators in early 2025. No current sats/share value is inferred.",
+  "sizes_checked": [
+    "1200x850"
+  ],
+  "min_label_px": 18,
+  "point_px": 44,
+  "contrast_min": 6.92,
+  "measured_by": "inspect_render",
+  "feed_width_viewed": true,
+  "five_second_test": {
+    "by": "agent",
+    "date": "2026-10-21",
+    "said": "Latest purchase 267 BTC, per-share table limited to early filed denominators",
+    "result": "pass"
+  },
+  "warn_reasons": {
+    "phone": "400px export inspected; 97-period overview and source table require desktop or zoom. No phone-legibility claim.",
+    "five-second test": "Agent self-test only; no human comprehension test or publication approval."
+  }
+}

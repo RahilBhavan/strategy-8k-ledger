@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-08-24,0000950170-25-111093,atm_total,OK,357000000,357000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-09-01,0001050446-25-000008,roll,OK,636505,636505,0,0,
+2025-09-01,0001050446-25-000008,continuity,KNOWN_EXCEPTION,2,1,1,0,"8-K filed 2025-09-02 covers Aug 26 - Sep 1; the prior 8-K covered Aug 18-24, so Aug 25 falls in neither stated period. Holdings still roll (no unreported BTC)."
+2025-09-01,0001050446-25-000008,avg_cost_basis,OK,73765,73762.2,2.8,8.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-09-01,0001050446-25-000008,avg_purchase_price,OK,110981,110993.1,-12.1,27.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-09-01,0001050446-25-000008,cost_basis_roll,OK,46950000000,46949300000,700000,10050000,
+2025-09-01,0001050446-25-000008,atm_total,OK,471800000,471800000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-09-07,0000950170-25-113360,roll,OK,638460,638460,0,0,
+2025-09-07,0000950170-25-113360,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-09-07,0000950170-25-113360,avg_cost_basis,OK,73880,73880.9,-0.9,8.8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-09-07,0000950170-25-113360,avg_purchase_price,OK,111196,111202,-6,55,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-09-07,0000950170-25-113360,cost_basis_roll,OK,47170000000,47167400000,2600000,10050000,
+2025-09-07,0000950170-25-113360,atm_total,OK,217300000,217300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-09-14,0001193125-25-202827,roll,OK,638985,638985,0,0,
+2025-09-14,0001193125-25-202827,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-09-14,0001193125-25-202827,avg_cost_basis,OK,73913,73914.1,-1.1,8.8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"

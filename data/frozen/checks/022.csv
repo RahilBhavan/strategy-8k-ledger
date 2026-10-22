@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-03-22,0001193125-26-118584,avg_purchase_price,OK,74326,74296.8,29.2,85.5,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-03-22,0001193125-26-118584,cost_basis_roll,OK,57690000000,57686600000,3400000,10050000,
+2026-03-22,0001193125-26-118584,atm_total,OK,76500000,76500000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-03-29,0001193125-26-130446,roll,OK,762099,762099,0,0,
+2026-03-29,0001193125-26-130446,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-03-29,0001193125-26-130446,avg_cost_basis,OK,75694,75698.8,-4.8,7.6,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-03-29,0001193125-26-130446,cost_basis_roll,OK,57690000000,57690000000,0,10000000,
+2026-03-31,0001193125-26-142925,roll,OK,762099,762099,0,0,
+2026-03-31,0001193125-26-142925,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-03-31,0001193125-26-142925,avg_cost_basis,OK,75694,75698.8,-4.8,7.6,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-03-31,0001193125-26-142925,cost_basis_roll,OK,57690000000,57690000000,0,10000000,
+2026-03-31,0001193125-26-142925,atm_total,OK,299300000,299300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-04-05,0001193125-26-142925,roll,OK,766970,766970,0,0,
+2026-04-05,0001193125-26-142925,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-04-05,0001193125-26-142925,avg_cost_basis,OK,75644,75648.3,-4.3,7.5,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-04-05,0001193125-26-142925,avg_purchase_price,OK,67718,67727.4,-9.4,18.2,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"

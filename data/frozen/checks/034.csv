@@ -1,0 +1,2 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-10-18,0001193125-26-424688,atm_total,OK,22000000,22000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)

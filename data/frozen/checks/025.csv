@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-05-17,0001193125-26-227918,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-05-17,0001193125-26-227918,avg_cost_basis,OK,75700,75698.9,1.1,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-05-17,0001193125-26-227918,avg_purchase_price,OK,80985,80823.5,161.5,203.7,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-05-17,0001193125-26-227918,cost_basis_roll,OK,63870000000,63870000000,0,15000000,
+2026-05-17,0001193125-26-227918,atm_total,OK,2032700000,2032700000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-05-25,0001193125-26-237907,roll,OK,843738,843738,0,0,
+2026-05-25,0001193125-26-237907,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-05-25,0001193125-26-237907,avg_cost_basis,OK,75700,75698.9,1.1,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-05-25,0001193125-26-237907,cost_basis_roll,OK,63870000000,63870000000,0,10000000,
+2026-05-31,0001193125-26-249768,roll,OK,843706,843706,0,0,
+2026-05-31,0001193125-26-249768,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-05-31,0001193125-26-249768,avg_cost_basis,OK,75699,75701.7,-2.7,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-05-31,0001193125-26-249768,avg_purchase_price,OK,77135,78125,-990,2768.7,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-05-31,0001193125-26-249768,cost_basis_roll,INFO,63870000000,63867577600,2422400,10000000,"sale week: stated basis fell by $0M for 32 BTC sold = $0 per BTC (+/- $312,500 from printed precision) vs prior average cost $75,700; not distinguishable from average cost at print precision"
+2026-05-31,0001193125-26-249768,atm_total,OK,128300000,128300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-06-07,0001193125-26-260709,roll,OK,845256,845256,0,0,

@@ -1,0 +1,13 @@
+period_end,btc_held,basic_shares_est,anchor_as_of,anchor_url,mstr_atm_shares_since_anchor,mstr_buyback_shares_since_anchor,sats_per_basic_share,method
+2026-08-09,840447,399251954,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,15026203,0,210505.42,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-08-16,840447,402710820,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,18485069,0,208697.4,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-08-23,840447,420971938,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,36746187,0,199644.42,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-08-30,845050,425503359,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,41277608,0,198600.08,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-09-07,845050,425503359,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,41277608,0,198600.08,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-09-13,845050,425503359,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,41277608,0,198600.08,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-09-20,846000,425503359,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,41277608,0,198823.34,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-09-27,847666,426972524,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,42746773,0,198529.4,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-09-30,847666,426972524,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,42746773,0,198529.4,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-10-04,848000,427065418,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,42839667,0,198564.43,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-10-11,848250,427190601,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,42964850,0,198564.76,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks
+2026-10-18,848517,427331473,2026-07-24,https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm,43105722,0,198561.78,model: cover-page basic count + weekly MSTR ATM shares - MSTR buybacks

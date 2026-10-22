@@ -1,0 +1,20 @@
+8-Ks read 147; weekly 93; weekly.csv 97 rows; instrument_weekly.csv 432 rows
+sats_per_share.csv 92 rows; cover-date residuals of the basic-share roll-forward:
+  2025-02-04 -> 2025-05-02: estimated 270,223,510 filed 273,403,303 miss +3,179,793 (1.16%)
+  2025-05-02 -> 2025-07-31: estimated 283,327,592 filed 283,552,947 miss +225,355 (0.08%)
+  2025-07-31 -> 2025-10-30: estimated 286,831,607 filed 287,353,735 miss +522,128 (0.18%)
+  2025-10-30 -> 2026-02-13: estimated 332,945,302 filed 333,752,708 miss +807,406 (0.24%)
+  2026-02-13 -> 2026-04-26: estimated 350,903,976 filed 350,447,872 miss -456,104 (-0.13%)
+  2026-04-26 -> 2026-07-24: estimated 378,480,852 filed 384,225,751 miss +5,744,899 (1.50%)
+atm_total            OK               72
+avg_cost_basis       KNOWN_EXCEPTION  1
+avg_cost_basis       OK               96
+avg_purchase_price   OK               75
+continuity           KNOWN_EXCEPTION  1
+continuity           OK               95
+cost_basis_roll      INFO             5
+cost_basis_roll      OK               91
+pref_buyback_roll    OK               13
+roll                 KNOWN_EXCEPTION  9
+roll                 OK               87
+wrote figures/sunday-tracker.svg, figures/card.html, figures/alt.txt and data/sourced_sats.csv

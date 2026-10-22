@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-01-26,0001193125-25-012671,cost_basis_roll,OK,30400000000,30400000000,0,150000000,
+2025-02-02,0001193125-25-018889,roll,OK,471107,471107,0,0,
+2025-02-02,0001193125-25-018889,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-02-02,0001193125-25-018889,avg_cost_basis,OK,64511,64528.9,-17.9,107.1,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-02-02,0001193125-25-018889,cost_basis_roll,OK,30400000000,30400000000,0,100000000,
+2025-02-09,0001193125-25-023183,roll,OK,478740,478740,0,0,
+2025-02-09,0001193125-25-023183,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-02-09,0001193125-25-023183,avg_cost_basis,OK,65033,64962.2,70.8,105.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-02-09,0001193125-25-023183,avg_purchase_price,OK,97255,97261.9,-6.9,13.9,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-02-09,0001193125-25-023183,cost_basis_roll,OK,31100000000,31142400000,-42400000,100050000,
+2025-02-17,0001193125-25-028184,roll,OK,478740,478740,0,0,
+2025-02-17,0001193125-25-028184,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-02-17,0001193125-25-028184,avg_cost_basis,OK,65033,64962.2,70.8,105.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-02-17,0001193125-25-028184,cost_basis_roll,OK,31100000000,31100000000,0,100000000,
+2025-02-23,0000950170-25-025233,roll,OK,499096,499096,0,0,
+2025-02-23,0000950170-25-025233,continuity,OK,1,1,0,0,days from previous period end to this period start

@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-06-29,0000950170-25-091211,roll,OK,597325,597325,0,0,
+2025-06-29,0000950170-25-091211,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-06-29,0000950170-25-091211,avg_cost_basis,OK,70982,70983.1,-1.1,9.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-06-29,0000950170-25-091211,avg_purchase_price,OK,106801,106807.2,-6.2,21.8,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-06-29,0000950170-25-091211,cost_basis_roll,OK,42400000000,42399400000,600000,5100000,
+2025-06-29,0000950170-25-091211,atm_total,OK,578100000,578100000,0,150000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-07-06,0000950170-25-094137,roll,OK,597325,597325,0,0,
+2025-07-06,0000950170-25-094137,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-07-06,0000950170-25-094137,avg_cost_basis,OK,70982,70983.1,-1.1,9.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-07-06,0000950170-25-094137,cost_basis_roll,OK,42400000000,42400000000,0,10000000,
+2025-07-13,0000950170-25-095461,roll,OK,601550,601550,0,0,
+2025-07-13,0000950170-25-095461,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-07-13,0000950170-25-095461,avg_cost_basis,OK,71268,71265.9,2.1,9.3,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-07-13,0000950170-25-095461,avg_purchase_price,OK,111827,111834.3,-7.3,26.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-07-13,0000950170-25-095461,cost_basis_roll,OK,42870000000,42872500000,-2500000,10050000,
+2025-07-13,0000950170-25-095461,atm_total,OK,472300000,472300000,0,200000,sum of per-instrument net proceeds vs the Total row (each cell rounded)

@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-12-07,0001193125-25-310607,avg_cost_basis,OK,74696,74702.1,-6.1,8.6,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-12-07,0001193125-25-310607,avg_purchase_price,OK,90615,90615.6,-0.6,10,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-12-07,0001193125-25-310607,cost_basis_roll,OK,49350000000,49342700000,7300000,10050000,
+2025-12-07,0001193125-25-310607,atm_total,OK,963000000,963000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-12-14,0001193125-25-318468,roll,KNOWN_EXCEPTION,671268,671269,-1,0,"persists: 660,624 + 10,645 = 671,269; 8-K states 671,268"
+2025-12-14,0001193125-25-318468,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-12-14,0001193125-25-318468,avg_cost_basis,OK,74972,74977.5,-5.5,8.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-12-14,0001193125-25-318468,avg_purchase_price,OK,92098,92090.2,7.8,10,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-12-14,0001193125-25-318468,cost_basis_roll,OK,50330000000,50330300000,-300000,10050000,
+2025-12-14,0001193125-25-318468,atm_total,OK,989000000,989000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-12-21,0001193125-25-327598,roll,OK,671268,671268,0,0,
+2025-12-21,0001193125-25-327598,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-12-21,0001193125-25-327598,avg_cost_basis,OK,74972,74977.5,-5.5,8.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-12-21,0001193125-25-327598,cost_basis_roll,OK,50330000000,50330000000,0,10000000,
+2025-12-21,0001193125-25-327598,atm_total,OK,747800000,747800000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-12-28,0001193125-25-332296,roll,OK,672497,672497,0,0,

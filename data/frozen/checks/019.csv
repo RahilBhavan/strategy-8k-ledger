@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-01-25,0001193125-26-021726,avg_purchase_price,OK,90061,90075,-14,33.4,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-01-25,0001193125-26-021726,cost_basis_roll,OK,54190000000,54184100000,5900000,10050000,
+2026-01-25,0001193125-26-021726,atm_total,OK,264000000,264000000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-02-01,0001193125-26-032731,roll,OK,713502,713502,0,0,
+2026-02-01,0001193125-26-032731,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-02-01,0001193125-26-032731,avg_cost_basis,OK,76052,76047.4,4.6,8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-02-01,0001193125-26-032731,avg_purchase_price,OK,87974,88070.2,-96.2,110.9,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-02-01,0001193125-26-032731,cost_basis_roll,OK,54260000000,54265300000,-5300000,10050000,
+2026-02-01,0001193125-26-032731,atm_total,OK,106100000,106100000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-02-08,0001193125-26-041944,roll,OK,714644,714644,0,0,
+2026-02-08,0001193125-26-041944,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-02-08,0001193125-26-041944,avg_cost_basis,OK,76056,76051.9,4.1,8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-02-08,0001193125-26-041944,avg_purchase_price,OK,78815,78809.1,5.9,79.3,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-02-08,0001193125-26-041944,cost_basis_roll,OK,54350000000,54350000000,0,10050000,
+2026-02-08,0001193125-26-041944,atm_total,OK,89500000,89500000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-02-16,0001193125-26-053105,roll,KNOWN_EXCEPTION,717131,717130,1,0,"reverts on 2026-02-22: 714,644 + 2,486 = 717,130; 8-K states 717,131"

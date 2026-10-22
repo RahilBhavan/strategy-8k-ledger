@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-04-05,0001193125-26-142925,cost_basis_roll,OK,58020000000,58019900000,100000,10050000,
+2026-04-05,0001193125-26-142925,atm_total,OK,174600000,174600000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-04-12,0001193125-26-152015,roll,OK,780897,780897,0,0,
+2026-04-12,0001193125-26-152015,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-04-12,0001193125-26-152015,avg_cost_basis,OK,75577,75579.7,-2.7,7.4,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-04-12,0001193125-26-152015,avg_purchase_price,OK,71902,71803,99,362.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-04-12,0001193125-26-152015,cost_basis_roll,OK,59020000000,59020000000,0,15000000,
+2026-04-12,0001193125-26-152015,atm_total,OK,1001300000,1001300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-04-19,0001193125-26-162756,roll,OK,815061,815061,0,0,
+2026-04-19,0001193125-26-162756,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-04-19,0001193125-26-162756,avg_cost_basis,OK,75527,75528.1,-1.1,7.1,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-04-19,0001193125-26-162756,avg_purchase_price,OK,74395,74347.3,47.7,148.4,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-04-19,0001193125-26-162756,cost_basis_roll,OK,61560000000,61560000000,0,15000000,
+2026-04-19,0001193125-26-162756,atm_total,OK,2542300000,2542300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-04-26,0001193125-26-178994,roll,OK,818334,818334,0,0,
+2026-04-26,0001193125-26-178994,continuity,OK,1,1,0,0,days from previous period end to this period start

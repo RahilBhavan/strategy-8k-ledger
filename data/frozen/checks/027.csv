@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2026-06-21,0001193125-26-276717,atm_total,OK,335500000,335500000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-06-28,0001193125-26-286871,roll,OK,847363,847363,0,0,
+2026-06-28,0001193125-26-286871,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-06-28,0001193125-26-286871,avg_cost_basis,OK,75651,75646.4,4.6,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-06-28,0001193125-26-286871,cost_basis_roll,OK,64100000000,64100000000,0,10000000,
+2026-06-28,0001193125-26-286871,atm_total,OK,1152400000,1152400000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2026-06-30,0001193125-26-295586,roll,OK,846000,846000,0,0,
+2026-06-30,0001193125-26-295586,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-06-30,0001193125-26-295586,avg_cost_basis,OK,75578,75579.2,-1.2,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-06-30,0001193125-26-295586,avg_purchase_price,OK,59256,59281,-25,59.4,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-06-30,0001193125-26-295586,cost_basis_roll,INFO,63940000000,63996887687,-56887687,10000000,"sale week: stated basis fell by $160M for 1,363 BTC sold = $117,388 per BTC (+/- $7,337 from printed precision) vs prior average cost $75,651; above average cost beyond print precision, so higher-cost lots appear to have been relieved (inference)"
+2026-07-05,0001193125-26-295586,roll,OK,843775,843775,0,0,
+2026-07-05,0001193125-26-295586,continuity,OK,1,1,0,0,days from previous period end to this period start
+2026-07-05,0001193125-26-295586,avg_cost_basis,OK,75476,75482.2,-6.2,6.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2026-07-05,0001193125-26-295586,avg_purchase_price,OK,60773,60764,9,37.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2026-07-05,0001193125-26-295586,cost_basis_roll,INFO,63690000000,63771838950,-81838950,10000000,"sale week: stated basis fell by $250M for 2,225 BTC sold = $112,360 per BTC (+/- $4,494 from printed precision) vs prior average cost $75,578; above average cost beyond print precision, so higher-cost lots appear to have been relieved (inference)"

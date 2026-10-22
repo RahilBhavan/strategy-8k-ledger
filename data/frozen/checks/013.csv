@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-10-05,0001193125-25-230977,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-10-05,0001193125-25-230977,avg_cost_basis,OK,73983,73980.8,2.2,8.8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-10-05,0001193125-25-230977,cost_basis_roll,OK,47350000000,47350000000,0,10000000,
+2025-10-05,0001193125-25-230977,atm_total,OK,0,0,0,5000000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-10-12,0001193125-25-238132,roll,KNOWN_EXCEPTION,640250,640251,-1,0,"persists: 640,031 + 220 = 640,251; 8-K states 640,250"
+2025-10-12,0001193125-25-238132,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-10-12,0001193125-25-238132,avg_cost_basis,OK,74000,74002.3,-2.3,8.8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-10-12,0001193125-25-238132,avg_purchase_price,OK,123561,123636.4,-75.4,509.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-10-12,0001193125-25-238132,cost_basis_roll,OK,47380000000,47377200000,2800000,10050000,
+2025-10-12,0001193125-25-238132,atm_total,OK,27300000,27300000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-10-19,0001193125-25-243049,roll,OK,640418,640418,0,0,
+2025-10-19,0001193125-25-243049,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-10-19,0001193125-25-243049,avg_cost_basis,OK,74010,74014.2,-4.2,8.8,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-10-19,0001193125-25-243049,avg_purchase_price,OK,112051,111904.8,146.2,632.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-10-19,0001193125-25-243049,cost_basis_roll,OK,47400000000,47398800000,1200000,10050000,
+2025-10-19,0001193125-25-243049,atm_total,OK,18800000,18900000,-100000,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)

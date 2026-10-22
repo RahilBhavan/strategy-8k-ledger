@@ -1,0 +1,17 @@
+accession,form,filed,doc_url,doc_role,period_start,period_end,ticker,action,program,currency,shares,notional_usd,amount_usd,available_usd,layout
+0001193125-26-341297,8-K,2026-08-10,https://www.sec.gov/Archives/edgar/data/1050446/000119312526341297/mstr-20260810.htm,8-K body,2026-08-03,2026-08-09,STRK,buyback,STRK Stock,USD,0,,0,,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,MSTR,atm_sale,MSTR Stock,USD,3458866,,333700000,21702700000,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRC,atm_sale,STRC Stock,USD,0,0,0,17510800000,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRD,atm_sale,STRD Stock,USD,0,0,0,4014800000,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRF,atm_sale,STRF Stock,USD,0,0,0,1619300000,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRK,atm_sale,STRK Stock,USD,0,0,0,2100000000,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,MSTR,buyback,MSTR Stock,USD,0,,0,,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRC,buyback,STRC Stock,USD,1388720,,132200000,,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRD,buyback,STRD Stock,USD,0,,0,,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRF,buyback,STRF Stock,USD,0,,0,,table
+0001193125-26-353240,8-K,2026-08-17,https://www.sec.gov/Archives/edgar/data/1050446/000119312526353240/mstr-20260817.htm,8-K body,2026-08-10,2026-08-16,STRK,buyback,STRK Stock,USD,0,,0,,table
+0001193125-26-361845,8-K,2026-08-24,https://www.sec.gov/Archives/edgar/data/1050446/000119312526361845/mstr-20260824.htm,8-K body,2026-08-17,2026-08-23,MSTR,atm_sale,MSTR Stock,USD,18261118,,2006500000,19694200000,table
+0001193125-26-361845,8-K,2026-08-24,https://www.sec.gov/Archives/edgar/data/1050446/000119312526361845/mstr-20260824.htm,8-K body,2026-08-17,2026-08-23,STRC,atm_sale,STRC Stock,USD,0,0,0,17510800000,table
+0001193125-26-361845,8-K,2026-08-24,https://www.sec.gov/Archives/edgar/data/1050446/000119312526361845/mstr-20260824.htm,8-K body,2026-08-17,2026-08-23,STRD,atm_sale,STRD Stock,USD,0,0,0,4014800000,table
+0001193125-26-361845,8-K,2026-08-24,https://www.sec.gov/Archives/edgar/data/1050446/000119312526361845/mstr-20260824.htm,8-K body,2026-08-17,2026-08-23,STRF,atm_sale,STRF Stock,USD,0,0,0,1619300000,table
+0001193125-26-361845,8-K,2026-08-24,https://www.sec.gov/Archives/edgar/data/1050446/000119312526361845/mstr-20260824.htm,8-K body,2026-08-17,2026-08-23,STRK,atm_sale,STRK Stock,USD,0,0,0,2100000000,table

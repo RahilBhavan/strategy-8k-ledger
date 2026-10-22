@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-08-10,0000950170-25-106241,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-08-10,0000950170-25-106241,avg_cost_basis,KNOWN_EXCEPTION,73288,73297.2,-9.2,8.9,"$73,288 x 628,946 BTC = $46.094B, which prints as $46.09B, but the 8-K prints $46.10B: the stated figures disagree by about $0.6M beyond print precision"
+2025-08-10,0000950170-25-106241,avg_purchase_price,OK,116401,116129,272,699.1,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-08-10,0000950170-25-106241,cost_basis_roll,OK,46100000000,46098000000,2000000,10050000,
+2025-08-10,0000950170-25-106241,atm_total,OK,13600000,13600000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-08-17,0000950170-25-109566,roll,OK,629376,629376,0,0,
+2025-08-17,0000950170-25-109566,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-08-17,0000950170-25-109566,avg_cost_basis,OK,73320,73326.6,-6.6,8.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-08-17,0000950170-25-109566,avg_purchase_price,OK,119666,119534.9,131.1,256.4,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-08-17,0000950170-25-109566,cost_basis_roll,OK,46150000000,46151400000,-1400000,10050000,
+2025-08-17,0000950170-25-109566,atm_total,OK,50400000,50400000,0,250000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-08-24,0000950170-25-111093,roll,OK,632457,632457,0,0,
+2025-08-24,0000950170-25-111093,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-08-24,0000950170-25-111093,avg_cost_basis,OK,73527,73522.8,4.2,8.9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-08-24,0000950170-25-111093,avg_purchase_price,OK,115829,115839,-10,36,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-08-24,0000950170-25-111093,cost_basis_roll,OK,46500000000,46506900000,-6900000,10050000,

@@ -1,0 +1,17 @@
+period_end,accession,check,status,stated,recomputed,diff,tolerance,note
+2025-07-20,0000950170-25-097081,roll,OK,607770,607770,0,0,
+2025-07-20,0000950170-25-097081,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-07-20,0000950170-25-097081,avg_cost_basis,OK,71756,71754.1,1.9,9.2,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-07-20,0000950170-25-097081,avg_purchase_price,OK,118940,118938.9,1.1,18.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-07-20,0000950170-25-097081,cost_basis_roll,OK,43610000000,43609800000,200000,10050000,
+2025-07-20,0000950170-25-097081,atm_total,OK,740300000,740300000,0,200000,sum of per-instrument net proceeds vs the Total row (each cell rounded)
+2025-07-27,0000950170-25-098938,roll,OK,607770,607770,0,0,
+2025-07-27,0000950170-25-098938,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-07-27,0000950170-25-098938,avg_cost_basis,OK,71756,71754.1,1.9,9.2,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-07-27,0000950170-25-098938,cost_basis_roll,OK,43610000000,43610000000,0,10000000,
+2025-08-03,0000950170-25-101634,roll,OK,628791,628791,0,0,
+2025-08-03,0000950170-25-101634,continuity,OK,1,1,0,0,days from previous period end to this period start
+2025-08-03,0000950170-25-101634,avg_cost_basis,OK,73277,73283.5,-6.5,9,"stated avg cost vs aggregate purchase price / BTC held; tolerance = half the last printed digit of the aggregate / BTC held, plus $1 for the rounded average"
+2025-08-03,0000950170-25-101634,avg_purchase_price,OK,117256,117025.8,230.2,241.6,"tolerance = half the last printed digit of the aggregate / BTC, + rounding of the BTC count, + $1"
+2025-08-03,0000950170-25-101634,cost_basis_roll,OK,46080000000,46070000000,10000000,15000000,
+2025-08-10,0000950170-25-106241,roll,OK,628946,628946,0,0,

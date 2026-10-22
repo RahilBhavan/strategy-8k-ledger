@@ -7,7 +7,7 @@
   "comparison": "BTC purchases and sales across 97 reported periods; 5 sourced per-share observations",
   "title": "267 BTC purchased in latest period",
   "subtitle": "Period 2026-10-12 to 2026-10-18 \u00b7 848,517 BTC held",
-  "caption": "Sats per basic share \u00b7 only same-date denominators printed in weekly filings",
+  "caption": "Sats per basic share \u00b7 Jan\u2013Feb 2025 only; later weekly filings print no same-date share count",
   "form": "bar",
   "values_count": 199,
   "shape_reason": "97 periods show changes in purchase magnitude and sale weeks; the 5 ratios use a table",
@@ -20,7 +20,8 @@
       "scale": "linear",
       "scale_labeled": true,
       "series": 2,
-      "lie_factor": 1.0
+      "lie_factor": 1.0,
+      "axis_max": 40000
     }
   ],
   "accents": 1,
@@ -41,7 +42,8 @@
   ],
   "alt": "Strategy period purchases and sales from 2025-01-05 to 2026-10-18. Latest purchase 267 BTC; holdings 848517 BTC. Sats per basic share are shown only for 5 same-date filed denominators in early 2025. No current sats/share value is inferred.",
   "sizes_checked": [
-    "1200x850"
+    "1200x850",
+    "400x283"
   ],
   "min_label_px": 18,
   "point_px": 44,
@@ -50,12 +52,15 @@
   "feed_width_viewed": true,
   "five_second_test": {
     "by": "agent",
-    "date": "2026-10-21",
-    "said": "Latest purchase 267 BTC, per-share table limited to early filed denominators",
+    "date": "2026-10-22",
+    "said": "Latest purchase 267 BTC is labeled on its bar; largest bar sits under the 40,000 gridline; per-share table limited to Jan-Feb 2025",
     "result": "pass"
   },
   "warn_reasons": {
     "phone": "400px export inspected; 97-period overview and source table require desktop or zoom. No phone-legibility claim.",
     "five-second test": "Agent self-test only; no human comprehension test or publication approval."
-  }
+  },
+  "annotations": [
+    "Latest Oct 12\u201318: 267 BTC (direct label and leader on the latest bar)"
+  ]
 }

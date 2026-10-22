@@ -22,6 +22,11 @@ def text(x, y, value, size=20, fill='#52545A', extra=''):
     return f'<text x="{x}" y="{y}" font-size="{size}" fill="{fill}" {extra}>{escape(str(value))}</text>'
 
 
+def span(start, end):
+    a, b = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
+    return f"{a:%b} {a.day}–{'' if a.month == b.month else f'{b:%b} '}{b.day}"
+
+
 def main():
     weeks = build.read('weekly.csv')
     sats = sourced_sats(weeks)
@@ -50,9 +55,12 @@ def main():
           text(40, 140, f"Period {latest['period_start']} to {latest['period_end']} · {int(latest['btc_held']):,} BTC held", 24, '#F5F5EF'),
           '<rect x="40" y="170" width="1120" height="640" fill="#F5F5EF"/>',
           text(70, 205, 'BTC acquired above zero; BTC sold below zero. Actual filing periods, not calendar resampling.', 20)]
-    zero, scale = 425, 210 / max(float(w['btc_acquired'] or 0) for w in weeks)
+    # Headroom: the top gridline is the next 10,000 above the largest purchase, so no bar overshoots it.
+    peak = max(float(w['btc_acquired'] or 0) for w in weeks)
+    top = 10000 * (int(peak // 10000) + 1)
+    zero, scale = 425, 195 / top
     x0, x1 = 150, 1080
-    for amount in (0, 10000, 20000):
+    for amount in range(0, top + 1, 10000):
         y = zero - amount * scale
         el.extend([text(65, round(y+6, 2), f'{amount:,}', 18),
                    f'<line x1="145" x2="1090" y1="{y}" y2="{y}" stroke="#9A9B96" stroke-width="0.5"/>'])
@@ -68,9 +76,14 @@ def main():
             if height:
                 y = zero-height if sign == 1 else zero
                 el.append(f'<rect x="{x:.2f}" y="{y:.2f}" width="5" height="{height:.3f}" fill="{color}" stroke="#111214" stroke-width="0.5"/>')
+        if i == len(weeks)-1:
+            # A small latest bar can be a pixel tall; a leader and label name it directly.
+            el.extend([f'<line x1="{x+2.5:.2f}" x2="{x+2.5:.2f}" y1="{zero-54}" y2="{zero-4}" stroke="#111214" stroke-width="1.5"/>',
+                       text(round(x+8, 2), zero-60, f"Latest {span(row['period_start'], row['period_end'])}: "
+                            f"{int(D(row['btc_acquired'])):,} BTC", 18, '#111214', 'text-anchor="end"')])
         if i % 16 == 0 or i == len(weeks)-1:
             el.append(text(round(x, 2), 470, row['period_end'][:7], 18, extra='text-anchor="middle"'))
-    el.append(text(70, 510, 'Sats per basic share · only same-date denominators printed in weekly filings', 22, '#111214'))
+    el.append(text(70, 510, 'Sats per basic share · Jan–Feb 2025 only; later weekly filings print no same-date share count', 22, '#111214'))
     for x, label in [(70, 'Period end'), (280, 'BTC held'), (490, 'Basic shares (filed, rounded)'), (900, 'Sats / basic share')]:
         el.append(text(x, 545, label, 20))
     for i, r in enumerate(sats):

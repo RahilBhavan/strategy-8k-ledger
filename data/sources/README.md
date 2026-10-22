@@ -1,0 +1,7 @@
+# Frozen primary source bytes
+
+`sec-sources.zip` contains the 184 public SEC resources listed in `data/frozen/manifest/`: original filing HTML, referenced exhibits, filing indexes, eight quarterly/annual reports, and the submissions-index snapshot. It is 3,895,660 bytes compressed (56,578,655 bytes uncompressed). Each resource retains its original URL, SHA-256, byte count and UTC fetch date in the manifest. `data/contract.json` pins the archive and restored tables.
+
+The corpus was selected as of October 21, 2026 America/Detroit; some UTC fetch timestamps fall on October 22. It is evidence for this frozen research snapshot, not current market data. `hydrate` reads only manifest-listed members, verifies each original-byte hash, and writes the cache. Existing corrupt cache files refuse; remove the identified corrupt file and hydrate again. A missing archive/member falls back to the original SEC URL, with an identifying `SEC_USER_AGENT`. The mutable submissions index may no longer match its frozen hash; live network recovery alone is not guaranteed.
+
+Source: SEC EDGAR CIK 1050446, URLs in the frozen manifest. These are public issuer filings and SEC indexes, not private user/account records. Public accessibility does not imply that all third-party content is public domain. Company text, marks and other third-party material retain their respective rights; no license or endorsement is asserted. The copies are retained for attributed, reproducible analysis. No images, external linked resources or user credentials were added.

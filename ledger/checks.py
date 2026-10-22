@@ -31,6 +31,21 @@ KNOWN = {
 }
 
 
+# A known date alone must never suppress a new error. Match the reviewed measurement.
+KNOWN_VALUES = {
+    ('avg_cost_basis', '2025-08-10'): ('73288', '73297.2', '8.9'),
+    ('continuity', '2025-09-01'): ('2', '1', '0'),
+    ('roll', '2025-10-12'): ('640250', '640251', '0'),
+    ('roll', '2025-12-14'): ('671268', '671269', '0'),
+    ('roll', '2026-02-16'): ('717131', '717130', '0'),
+    ('roll', '2026-02-22'): ('717722', '717723', '0'),
+    ('roll', '2026-06-14'): ('846842', '846843', '0'),
+    ('roll', '2026-06-21'): ('847363', '847362', '0'),
+    ('roll', '2026-08-02'): ('842138', '842137', '0'),
+    ('roll', '2026-08-09'): ('840447', '840448', '0'),
+    ('roll', '2026-09-27'): ('847666', '847665', '0'),
+}
+
 def d(v):
     return None if v in (None, '') else D(v)
 
@@ -51,7 +66,10 @@ def run(weeks=None, insts=None):
     def add(w, check, stated, recomputed, tol, note=''):
         diff = None if stated is None or recomputed is None else stated - recomputed
         ok = diff is not None and abs(diff) <= tol
-        status = 'OK' if ok else 'KNOWN_EXCEPTION' if (check, w['period_end']) in KNOWN else 'BREAK'
+        signature = tuple(None if v is None else D(v) for v in (stated, recomputed, tol))
+        known = KNOWN_VALUES.get((check, w['period_end']))
+        reviewed = known is not None and signature == tuple(D(v) for v in known)
+        status = 'OK' if ok else 'KNOWN_EXCEPTION' if reviewed else 'BREAK'
         if status == 'KNOWN_EXCEPTION':
             note = KNOWN[(check, w['period_end'])]
         out.append({'period_end': w['period_end'], 'accession': w['accession'], 'check': check, 'status': status,

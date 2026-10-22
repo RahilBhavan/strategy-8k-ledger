@@ -10,6 +10,8 @@ Requests are throttled to about 6-7 per second and retry on 429/503. Network fet
 
 When an 8-K body has no weekly update but says it furnishes Exhibit 99.1, the parser reads the exhibit found in the filing's `index.json`. This happened for 2025-05-27, 2025-10-14 and 2026-10-13.
 
+Frozen clean clones hydrate from the committed `data/sources/sec-sources.zip`, checking original-byte hashes before writes. Existing cached bytes are hash-checked on every parser fetch. See the [archive notes](../data/sources/README.md).
+
 ## Parse
 
 `ledger/parse.py` reads one document into week rows and instrument rows. Three layout families:
@@ -35,3 +37,5 @@ Tests in `tests/test_ledger.py` alter real filings (rename a column, rename a he
 ## Attribution
 
 The fetch client, the heading-based section finder, the HTML-to-blocks flattener, `num` and the USD Reserve balance patterns are adapted from [dat-accretion](https://github.com/RahilBhavan/dat-accretion) (`dat/edgar.py`, `dat/parse_mstr.py`), which parses the same 8-Ks from June 2026. That repository was read, not modified. New here: the 2025 prose and table layouts, remaining ATM capacity per program, cumulative cost basis, buyback authorization, the manifest, the checks module, the share-count roll-forward and the chart.
+
+Overlapping weekly periods (including amendments/replays) refuse before output writes. Conflicting table values for one date refuse instead of using the final table. No automatic supersession is inferred. Period-bearing security tables are validated even if their trade trigger header changes.

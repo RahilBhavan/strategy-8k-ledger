@@ -1,6 +1,8 @@
-# Data schema
+# Data schema · v1.0.0
 
 Purpose: the column contract for every CSV in `data/`, for people and agents that read them (the issuance-router scenario comparison and deterministic filings CLI). Rebuild with `python -m ledger all`.
+
+The machine-readable snapshot contract is `data/contract.json`; see [dependency-contract.md](dependency-contract.md) for commit pins, integrity and API behavior. Existing columns are unchanged from `3c95b9e`.
 
 ## Conventions
 

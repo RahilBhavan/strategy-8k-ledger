@@ -98,7 +98,11 @@ def fetch(url, refresh=False):
             f.write(body)
         _record(path, url, body)
     with open(path, 'rb') as f:
-        return f.read()
+        body = f.read()
+    expected = _manifest().get(os.path.relpath(path, RAW))
+    if expected is None or hashlib.sha256(body).hexdigest() != expected['sha256']:
+        raise ValueError(f'cache hash mismatch or missing provenance: {path}; run ledger hydrate')
+    return body
 
 
 def fetch_text(url):

@@ -12,6 +12,13 @@ def parse_document(html_text, what):
     def week(end, layout):
         return weeks.setdefault(end, {'layout': layout})
 
+    def table_update(w, **values):
+        for field, value in values.items():
+            if value is not None and w.get(field) is not None and w[field] != value:
+                raise UnknownLayout(f'{what}: conflicting table values for {field}: {w[field]} and {value}')
+            if value is not None:
+                w[field] = value
+
     for kind, sec in secs:
         tables = [v for k, v in sec if k == 'table']
         trade_tables = [t for t in tables if any(TRADE_HEADER.match(norm(c)) for r in t for c in r)]
@@ -32,17 +39,19 @@ def parse_document(html_text, what):
                     s, e = d['period']
                     w = week(e, 'table')
                     if s:
-                        w['period_start'] = s
+                        table_update(w, period_start=s)
                     if 'held' in d:
-                        w.update(btc_held=d['held'], btc_cost_basis_usd=d.get('basis'),
+                        table_update(w, btc_held=d['held'], btc_cost_basis_usd=d.get('basis'),
                                  btc_cost_basis_usd_precision=d.get('basis_prec'), btc_avg_cost_basis=d.get('avgbasis'))
                     if 'acquired' in d or 'sold' in d or 'usd' in d:
-                        w.update(btc_acquired=d.get('acquired', Decimal(0)), btc_sold=d.get('sold', Decimal(0)),
+                        table_update(w, btc_acquired=d.get('acquired', Decimal(0)), btc_sold=d.get('sold', Decimal(0)),
                                  btc_purchase_usd=d.get('usd'), btc_purchase_usd_precision=d.get('usd_prec'),
                                  btc_avg_purchase_price=d.get('avg'))
         if kind in ('atm', 'atm+btc'):
             for t in tables:
-                if not any(re.match(r'Shares Sold', norm(c)) for r in t for c in r):
+                if not (any(re.match(r'Shares Sold', norm(c)) for r in t for c in r)
+                        or (any(r and row_ticker(norm(r[0])) for r in t)
+                            and any(period_of(c) for r in t for c in r))):
                     continue
                 rows, total = security_table(t, ATM_COLS, what, 'atm')
                 for (s, e), tick, v, prog in rows:
@@ -60,7 +69,9 @@ def parse_document(html_text, what):
                         notes.append(f'ATM total cell not parsed: {total!r}')
         if kind == 'repurchase':
             for t in tables:
-                if not any(re.match(r'Shares Repurchased', norm(c)) for r in t for c in r):
+                if not (any(re.match(r'Shares Repurchased', norm(c)) for r in t for c in r)
+                        or (any(r and row_ticker(norm(r[0])) for r in t)
+                            and any(period_of(c) for r in t for c in r))):
                     continue
                 rows, _ = security_table(t, REPO_COLS, what, 'repurchase')
                 for (s, e), tick, v, prog in rows:

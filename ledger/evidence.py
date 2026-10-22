@@ -4,6 +4,7 @@ Locators identify source sections, not original HTML line numbers or individual 
 Headers, units and dates remain alongside the value. No external model is involved.
 """
 import hashlib
+from pathlib import Path
 from . import edgar
 from .html import blocks
 from .parse import norm, is_heading, HEADINGS
@@ -18,7 +19,11 @@ DERIVED = {
 
 
 def source_lines(url):
-    body = edgar.fetch(url)
+    path = Path(edgar.cache_path(url))
+    try:
+        body = path.read_bytes()
+    except OSError as e:
+        raise ValueError(f'source cache unavailable: {url}; run ledger restore and hydrate') from e
     expected = edgar._manifest().get(edgar.os.path.relpath(edgar.cache_path(url), edgar.RAW))
     if expected is None or hashlib.sha256(body).hexdigest() != expected['sha256']:
         raise ValueError(f'source hash unavailable or mismatched: {url}; run ledger hydrate')
@@ -49,7 +54,7 @@ def cite(row, field):
     elif field in ('class_a', 'class_b', 'basic'):
         cats, pattern = set(), r'As of .*registrant had .*class A common stock'
     elif 'shares' in field and 'ticker' not in row:
-        cats, pattern = set(), r'Basic Shares Outstanding|Assumed Diluted|in .000s|\d/\d/2025'
+        cats, pattern = set(), r'Basic Shares Outstanding|Assumed Diluted|in .000s|\d{1,2}/\d{1,2}/\d{4}'
     else:
         cats, pattern = {'atm', 'atm+btc'}, r'ATM|Sales Agreement|Shares|available for issuance'
     selected = [(i + 1, t) for i, (cat, t) in enumerate(lines)

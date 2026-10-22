@@ -4,6 +4,8 @@ Purpose: explain how every output field connects to its source without inventing
 
 Each weekly or instrument row carries `doc_url`, `accession`, `form`, `filed`, `period_start` and `period_end`. Document roles distinguish 8-K bodies from Exhibit 99.1. Fetch UTC is retrieval time, not economic as-of time. Manifest hashes identify original bytes. All populated fields inherit that document citation; blank fields mean missing or inapplicable, never zero.
 
+`cite` is offline and raises `ValueError` for missing/cache/hash failures. It verifies source bytes against the local manifest, not arbitrary caller-provided CSV values; consumers must pin and hash-validate normalized tables and the manifest using [the dependency contract](dependency-contract.md).
+
 `ledger.evidence.cite(row, field)` returns that field/value and numbered normalized source lines. A paragraph is one line; each table row is one line with cells joined by ` | `. Source sections include headers, dates, units and footnotes. These are section-level locators, not claims of cell-level attribution or original HTML line numbers. Use `source_lines(url)` to replay the numbering. The numeric field name is an extraction/schema locator; it is not a source label.
 
 - BTC quantities, aggregate cost and averages cite BTC / combined ATM-BTC sections or matching prose.

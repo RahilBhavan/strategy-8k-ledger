@@ -9,3 +9,8 @@
 - [Verification](verification.md): executed checks and limits.
 - [Demo summary](demo.txt): successful rebuild/check output.
 - [Evidence example](evidence-example.json): exact latest holdings citation.
+
+- [Dependency contract](dependency-contract.md): stable v1 interfaces and trusted commit pins.
+- [Review](review.md): proven repairs and remaining limits.
+- [Publication plan](publication-plan.md): persistent objective checklist.
+- [Publication receipt](publication.md): remote commit, clean clone and CI evidence.

@@ -1,11 +1,13 @@
 """Small reviewable CSV shards; restore and verified raw-source hydration."""
 import csv
 import hashlib
+import zipfile
 from pathlib import Path
 from . import edgar
 
 ROOT = Path(edgar.ROOT)
 FROZEN = ROOT / 'data' / 'frozen'
+BUNDLE = ROOT / 'data' / 'sources' / 'sec-sources.zip'
 NAMES = ('weekly', 'instrument_weekly', 'filings', 'share_anchors', 'sats_per_share', 'sourced_sats', 'checks')
 
 
@@ -46,8 +48,18 @@ def hydrate():
         manifest = list(csv.DictReader(f))
     for r in manifest:
         path = Path(edgar.RAW) / r['path']
+        if not path.resolve().is_relative_to(Path(edgar.RAW).resolve()):
+            raise ValueError('source path outside cache')
         if not path.exists():
-            data = edgar.client().get(r['url'])
+            # The frozen index changes upstream. Prefer the archived original bytes.
+            if BUNDLE.exists():
+                with zipfile.ZipFile(BUNDLE) as archive:
+                    try:
+                        data = archive.read(r['path'])
+                    except KeyError:
+                        data = edgar.client().get(r['url'])
+            else:
+                data = edgar.client().get(r['url'])
             if hashlib.sha256(data).hexdigest() != r['sha256']:
                 raise ValueError(f'source changed: {r["url"]}')
             path.parent.mkdir(parents=True, exist_ok=True)

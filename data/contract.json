@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_as_of": "2026-10-21",
+  "latest_filing_date": "2026-10-19",
+  "latest_period_end": "2026-10-18",
+  "tables": {
+    "weekly": {
+      "sha256": "0387d872ad0dc08791e4202b1fb50ce1fceda0ae91ea90a6567d43cd84aeb1f8",
+      "rows": 97,
+      "columns": [
+        "accession",
+        "form",
+        "filed",
+        "doc_url",
+        "doc_role",
+        "fetched_utc",
+        "period_start",
+        "period_end",
+        "layout",
+        "btc_acquired",
+        "btc_sold",
+        "btc_purchase_usd",
+        "btc_purchase_usd_precision",
+        "btc_avg_purchase_price",
+        "btc_held",
+        "btc_cost_basis_usd",
+        "btc_cost_basis_usd_precision",
+        "btc_avg_cost_basis",
+        "atm_net_proceeds_usd",
+        "atm_total_net_proceeds_stated",
+        "atm_no_sales_stated",
+        "buyback_usd",
+        "pref_buyback_remaining_usd",
+        "mstr_buyback_remaining_usd",
+        "pref_buyback_authorization_increase_usd",
+        "usd_reserve",
+        "usd_cash",
+        "basic_shares",
+        "assumed_diluted_shares"
+      ]
+    },
+    "instrument_weekly": {
+      "sha256": "66c17c2956cf8ce346786301ecd3ea79053936499da75d62a7bc559cd55f0a9c",
+      "rows": 432,
+      "columns": [
+        "accession",
+        "form",
+        "filed",
+        "doc_url",
+        "doc_role",
+        "period_start",
+        "period_end",
+        "ticker",
+        "action",
+        "program",
+        "currency",
+        "shares",
+        "notional_usd",
+        "amount_usd",
+        "available_usd",
+        "layout"
+      ]
+    },
+    "filings": {
+      "sha256": "7ca1aa1c344809172ac3f36a5e769dd75d8673c0a76c9b3b16872007e8d829ab",
+      "rows": 147,
+      "columns": [
+        "accession",
+        "form",
+        "filed",
+        "items",
+        "url",
+        "status",
+        "doc_url",
+        "weeks",
+        "note"
+      ]
+    },
+    "share_anchors": {
+      "sha256": "19d6bfdfb26e17d5ba9d6d75df7f843455697619db8f5373fc222cab707d49bc",
+      "rows": 8,
+      "columns": [
+        "as_of",
+        "class_a",
+        "class_b",
+        "basic",
+        "form",
+        "accession",
+        "filed",
+        "doc_url",
+        "definition"
+      ]
+    },
+    "sats_per_share": {
+      "sha256": "e8467fbe294edb970203c5143520d084583ff4e1c2db2552800f79dd68205253",
+      "rows": 92,
+      "columns": [
+        "period_end",
+        "btc_held",
+        "basic_shares_est",
+        "anchor_as_of",
+        "anchor_url",
+        "mstr_atm_shares_since_anchor",
+        "mstr_buyback_shares_since_anchor",
+        "sats_per_basic_share",
+        "method"
+      ]
+    },
+    "sourced_sats": {
+      "sha256": "b833e9142b2759634c9d765a19047b9ea2be77584ed25aa63c3f7d83eb09ed7e",
+      "rows": 5,
+      "columns": [
+        "period_end",
+        "btc_held",
+        "basic_shares",
+        "sats_per_basic_share",
+        "doc_url",
+        "filed"
+      ]
+    },
+    "checks": {
+      "sha256": "0bad0e75296f86720417430d7db3551b9180ad2784c639b4db78e111e7e6603f",
+      "rows": 545,
+      "columns": [
+        "period_end",
+        "accession",
+        "check",
+        "status",
+        "stated",
+        "recomputed",
+        "diff",
+        "tolerance",
+        "note"
+      ]
+    },
+    "manifest": {
+      "sha256": "4d3f660575021a2598216512347570bee6679e999e6de3c056905ddf48749e83",
+      "rows": 184,
+      "columns": [
+        "path",
+        "url",
+        "fetched_utc",
+        "sha256",
+        "bytes"
+      ]
+    }
+  },
+  "source_archive": {
+    "path": "data/sources/sec-sources.zip",
+    "sha256": "e2905e3c455918af3c8df7b55892ef4a5e1ba629d1ee5408292967a3e22a3cbc",
+    "resources": 184
+  }
+}

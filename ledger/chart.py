@@ -38,9 +38,6 @@ def main():
     fonts = []
     for name, filename in [('Plex', 'IBMPlexSans-Regular.ttf'), ('Anton', 'Anton-Regular.ttf')]:
         p = FIG / 'fonts' / filename
-        # Shared installed design-system assets are a fallback when raw font copies are absent.
-        if not p.exists():
-            p = Path.home() / '.codex/skills/rahil-design/assets/fonts' / filename
         if p.exists():
             encoded = base64.b64encode(p.read_bytes()).decode()
             fonts.append(f"@font-face{{font-family:{name};src:url(data:font/ttf;base64,{encoded})}}")

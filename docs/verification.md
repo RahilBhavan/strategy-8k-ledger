@@ -1,31 +1,44 @@
 # Verification receipt
 
-Purpose: record executed behavior and practical limits. Run on 2026-10-21 America/Detroit with Python 3.14.7.
+Purpose: record actual behavior and its limits for the reviewed public v1 snapshot.
 
-Executed from the repository root:
+Baseline `3c95b9e`: 37 tests passed. Reviewed implementation: **45 tests pass**, Python 3.14.7, on October 21, 2026 America/Detroit. Pinned CI runtime: Python 3.13.7 on Ubuntu 24.04. No dependencies for CLI/tests/SVG; no separate static typechecker is configured. `compileall` verifies all Python modules compile.
+
+## Clean source copy
+
+A scratch source copy under `~/scratch/strategy-8k-ledger/prepublication/` began without `data/raw/` or generated CSVs. Each of these commands succeeded there, with `SEC_USER_AGENT` unset for restoration/hydration:
 
 ```bash
 python -m ledger restore
 python -m ledger hydrate
+python scripts/verify_contract.py
 python -m unittest discover -s tests -v
 python -m ledger all
+python scripts/verify_contract.py
 python -m ledger diff
 python -m ledger evidence --period 2026-10-18 --field btc_held
-python -m ledger snapshot
+python -m compileall -q ledger scripts tests
 ```
 
-37 tests pass. Real-source tests reparse 147 candidate filings, compare rebuilt output bytes, check the 97 weekly and 432 instrument rows, validate cached SHA-256 and dates, and exercise prose, tables, exhibits, quarter-end subperiods, missing values, duplicated agreements and sales. Mutations of real documents prove unknown headings/columns/tickers and broken prose refuse. Injected missing purchases produce a roll break. Simulated HTTP 429 retry/success and 503 exhaustion test the actual client without network/sleep. Cache corruption is detected; two hydration passes verify the same 184 sources. No live rate-limit outage was induced.
+Hydration verified all **184** original public resources. Rebuild read **147** candidate filings, classified **93** weekly updates, and produced **97** weekly and **432** instrument rows. All eight table/manifest hashes and the archive hash matched `data/contract.json` before and after `all`. The latest diff reports **267 BTC** purchased and **848,517 BTC** held for October 12–18. Evidence returns original SHA-256 `758fffb5bae03a2b52568ef75168f7fe710e41b46f1092e96fd72425865c99f3` and numbered source lines. Current `basic_shares` is unavailable, and no current sats/share is generated.
 
-Frozen shards reproduce the local CSV records. Restart means a fresh CLI process: source cache and outputs survive and replay identically; there is no service or database. Rebuilds do not append duplicates. Parser exceptions stop the build; previously generated outputs can remain stale after a failure, so a failed build is not a freshness signal.
+Real-source and mutation tests cover all parser families, exhibits, quarter-end subperiods, sales, missing values, unsupported headings/columns/tickers, dropped-table headers, table conflicts and amended/replayed periods. Rebuilds replace outputs rather than append. The new offline empty-cache test forbids network, hydrates twice, and compares every file byte. Retry tests simulate actual-client HTTP 429 success and 503 exhaustion without sleeping. Hash corruption refuses before parsing. Missing evidence is an offline `ValueError`. Each repaired defect has a red-before/green-after regression; see [review.md](review.md).
 
-`docs/demo.txt` saves the full successful `all` summary. `docs/evidence-example.json` saves the latest holdings evidence. The consistency report has no unexplained BREAK rows; known exceptions and INFO rows are documented, not promoted to exact reconciliation. No general claim of exhaustive SEC history or audited financial truth is made.
+There are zero unexplained `BREAK` rows. Eleven exact reviewed exceptions remain, and five sale cost-basis checks are `INFO` inferences, not accounting passes. The inherited share-count roll-forward has 92 model rows and residuals as large as 1.50%; it is excluded from the sourced chart/consumer answers. Frozen economic rows and CSV columns did not change in this review.
 
-## Chart review
+## Portable chart
 
-Generated `figures/sunday-tracker.svg`, `card.html`, `alt.txt`, `sunday-tracker@2x.png` (2400×1700) and `feed400.png`. Actual embedded Anton/IBM Plex Sans fonts came from the existing Rahil Design assets; font source/license provenance was retained locally in `figures/fonts/`. No project license was added.
+The scratch copy generated SVG/HTML using only bundled OFL fonts. Optional PNG export ran with Playwright 1.63.0 using the already installed Chromium; a new browser installation was not exercised. The original and scratch results matched byte-for-byte:
 
-The optional `scripts/render_chart.py` was exercised using Python 3.13.15 and Playwright 1.63.0 installed under `~/scratch/strategy-8k-ledger`; the existing Playwright Chromium was used. `present-data/scripts/inspect_render.py` at 1200×850 passed: 41 text runs, minimum 18px, 44px headline, minimum text contrast 6.92:1, no reported collisions/clipping. `check_figure.py figures/brief.json` passed with an agent-only five-second-test warning. Both desktop PNG and 400px export were visually inspected. The dense phone overview needs zoom; no claim of phone-readable source tables is made. No human comprehension test was performed.
+- `figures/sunday-tracker@2x.png`, 2400×1700: SHA-256 `a38de967ea2ebe4cba7260416a8ade202e6fcba7f1011ac0d5f270284c078333`.
+- `figures/sunday-tracker.svg`: SHA-256 `80437f496e2bd0f664ca5ab24082ee816223e1980f7004732057b06d2a7ea355`.
 
-Tufte review: purchase/sale bars share one linear BTC scale and a zero baseline, actual dates set x positions, bar height is proportional to quantity (Lie Factor 1 before pixel rounding), missing values are not zero bars, only the latest purchase is accented, and the five per-share ratios use a table. Ratios use filed same-date basic shares, not the inherited share-count model. The dataviz skill was not present in the installed catalog; no categorical palette was introduced.
+The 1200×850 inspector passed: 41 text runs, minimum 18 px, 44 px headline, minimum text contrast 6.92:1, no reported clipping/collisions. The figure brief passed with the disclosed agent-only comprehension-test warning. Desktop and 400 px exports were visually inspected; dense tables at 400 px need zoom. No human comprehension test is claimed. The original visual identity is preserved. Dataviz was absent from the available skill catalog; no categorical palette was introduced.
 
-Generated large artifacts and raw filings remain local and ignored; committed source, manifest shards and CSV shards reproduce them. Fresh network hydration and fallback-font appearance on other hosts remain unverified.
+Tufte checks: shared linear BTC scale, bars at zero, proportional heights, actual date positions, missing values excluded, one latest-period accent, and a table for five filed-denominator ratios. No model denominator or forecast is drawn.
+
+## Remaining operational limits
+
+Source hashes and schema contracts rely on the trusted reviewed Git pin. Section citations do not attest arbitrary caller-provided values. Failed builds can leave old output files; concurrent builds and power-interrupted multi-file output writes are unsupported. Automatic amendment supersession, exhaustive SEC-history discovery, fresh live network recovery, fresh browser installation, audited financial accuracy and security certification are unclaimed.
+
+GitHub default-branch, fresh remote clone and CI evidence are recorded separately in [publication.md](publication.md) after execution.

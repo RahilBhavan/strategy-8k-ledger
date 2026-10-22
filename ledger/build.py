@@ -58,6 +58,7 @@ def parse_filing(f):
 def build(refresh=False):
     filings = edgar.filings(since=SINCE, refresh=refresh)
     weeks, insts, log = [], [], []
+    period_sources = {}
     for f in filings:
         try:
             url, role, p = parse_filing(f)
@@ -66,6 +67,11 @@ def build(refresh=False):
             continue
         base = {'accession': f['accession'], 'form': f['form'], 'filed': f['filed'], 'doc_url': url, 'doc_role': role}
         for w in p.weeks:
+            if w.period_end in period_sources:
+                raise UnknownLayout(f'duplicate economic period {w.period_end}: '
+                                    f'{period_sources[w.period_end]} and {f["accession"]}; '
+                                    'review amendment/restatement before rebuilding')
+            period_sources[w.period_end] = f['accession']
             atm = [i for i in p.instruments if i.action == 'atm_sale' and i.period_end == w.period_end]
             bb = [i for i in p.instruments if i.action == 'buyback' and i.period_end == w.period_end]
             row = dict(base, fetched_utc=edgar.fetched_at(url), **{k: getattr(w, k) for k in Week.__dataclass_fields__})

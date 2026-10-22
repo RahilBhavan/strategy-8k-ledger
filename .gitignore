@@ -6,3 +6,10 @@ data/*.csv
 figures/*
 !figures/brief.json
 !figures/alt.txt
+!figures/sunday-tracker@2x.png
+!figures/fonts/
+figures/fonts/*
+!figures/fonts/Anton-Regular.ttf
+!figures/fonts/IBMPlexSans-Regular.ttf
+!figures/fonts/*LICENSE.txt
+!figures/fonts/SOURCES.md

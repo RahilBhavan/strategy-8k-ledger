@@ -1,6 +1,6 @@
 # Weekly ledger v1 scope and acceptance
 
-Agreed 2026-10-21. Continue the partial stdlib Python CLI locally; no publication or license choice.
+Agreed 2026-10-21. Continue the stdlib Python CLI. Original scope was local; subsequent explicit authorization includes correctness repairs, CI and public GitHub publication. No license choice was authorized.
 
 - Rebuild weekly and per-program issuance/capacity records from the cached primary SEC corpus, retaining URLs, accession, filing date, period dates and content hashes.
 - Give each populated economic field a source document and a deterministic evidence locator; distinguish derived sums/precision from filed values. Missing values stay missing.

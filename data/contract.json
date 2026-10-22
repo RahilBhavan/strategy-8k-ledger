@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "snapshot_as_of": "2026-10-21",
   "latest_filing_date": "2026-10-19",
   "latest_period_end": "2026-10-18",
@@ -116,6 +116,27 @@
         "sats_per_basic_share",
         "doc_url",
         "filed"
+      ]
+    },
+    "cover_sats": {
+      "sha256": "1cf39ad5c8e2b2fdf5d6be43ad1b283fa24cc40ee6fe7973155364d4374c0532",
+      "rows": 6,
+      "columns": [
+        "share_as_of",
+        "share_form",
+        "share_accession",
+        "share_filed",
+        "share_url",
+        "basic_shares",
+        "before_period_end",
+        "btc_held_before",
+        "before_url",
+        "after_period_end",
+        "btc_held_after",
+        "after_btc_sold",
+        "after_url",
+        "sats_low",
+        "sats_high"
       ]
     },
     "checks": {

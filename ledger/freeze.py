@@ -8,7 +8,7 @@ from . import edgar
 ROOT = Path(edgar.ROOT)
 FROZEN = ROOT / 'data' / 'frozen'
 BUNDLE = ROOT / 'data' / 'sources' / 'sec-sources.zip'
-NAMES = ('weekly', 'instrument_weekly', 'filings', 'share_anchors', 'sats_per_share', 'sourced_sats', 'checks')
+NAMES = ('weekly', 'instrument_weekly', 'filings', 'share_anchors', 'sats_per_share', 'sourced_sats', 'cover_sats', 'checks')
 
 
 def snapshot():

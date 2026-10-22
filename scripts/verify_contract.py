@@ -16,4 +16,4 @@ for name, expected in contract['tables'].items():
     assert len(rows) - 1 == expected['rows'], f'{name}: row count differs'
 archive = contract['source_archive']
 assert hashlib.sha256((root / archive['path']).read_bytes()).hexdigest() == archive['sha256']
-print(f"schema {contract['schema_version']}: all 8 tables/manifest and source archive match reviewed hashes")
+print(f"schema {contract['schema_version']}: all {len(contract['tables'])} tables/manifest and source archive match reviewed hashes")

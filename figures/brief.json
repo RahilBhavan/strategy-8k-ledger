@@ -2,15 +2,15 @@
   "id": "strategy-sunday-tracker",
   "template": "rahil-design-landscape",
   "reader": "Engineer reviewing the local Strategy ledger on desktop",
-  "decision": "Check period purchases and whether the denominator supports a per-share calculation",
-  "point": "267 BTC were purchased in the latest period; sats/share has only 5 same-date filed denominators",
-  "comparison": "BTC purchases and sales across 97 reported periods; 5 sourced per-share observations",
+  "decision": "Check period purchases and which share counts support a per-share calculation",
+  "point": "267 BTC were purchased in the latest period; sats/share uses 5 same-date 8-K share counts, then 6 10-Q/10-K cover counts bracketed by weekly holdings",
+  "comparison": "BTC purchases and sales across 97 reported periods; 5 same-date per-share observations and 6 cover-date ranges",
   "title": "267 BTC purchased in latest period",
   "subtitle": "Period 2026-10-12 to 2026-10-18 \u00b7 848,517 BTC held",
-  "caption": "Sats per basic share \u00b7 Jan\u2013Feb 2025 only; later weekly filings print no same-date share count",
+  "caption": "Sats per basic share = BTC held \u00d7 100,000,000 / basic shares",
   "form": "bar",
-  "values_count": 199,
-  "shape_reason": "97 periods show changes in purchase magnitude and sale weeks; the 5 ratios use a table",
+  "values_count": 229,
+  "shape_reason": "97 periods show changes in purchase magnitude and sale weeks; the 11 ratios use two labeled tables",
   "encodings": [
     {
       "mark": "bar",
@@ -27,8 +27,9 @@
   "accents": 1,
   "accent_meaning": "title-value",
   "estimates": {
-    "present": false,
-    "labeled": false
+    "present": true,
+    "labeled": true,
+    "treatment": "range"
   },
   "illustration": false,
   "illustration_labeled": false,
@@ -38,12 +39,17 @@
       "title": "Strategy weekly 8-Ks, CIK 1050446, frozen CSV URLs and manifest hashes",
       "url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526424688/mstr-20261019.htm",
       "as_of": "2026-10-19"
+    },
+    {
+      "title": "Strategy Form 10-Q for Q2 2026 (latest cover-page share count), accession 0001050446-26-000044",
+      "url": "https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm",
+      "as_of": "2026-07-24"
     }
   ],
-  "alt": "Strategy period purchases and sales from 2025-01-05 to 2026-10-18. Latest purchase 267 BTC; holdings 848517 BTC. Sats per basic share are shown only for 5 same-date filed denominators in early 2025. No current sats/share value is inferred.",
+  "alt": "Strategy period purchases and sales from 2025-01-05 to 2026-10-18. Latest purchase 267 BTC; holdings 848517 BTC. Sats per basic share use 5 same-date weekly 8-K share counts from early 2025, then 6 10-Q/10-K cover-page share counts through 2026-07-24, each shown as a range between the weekly holdings before and after the cover date. No current sats/share value is inferred.",
   "sizes_checked": [
-    "1200x850",
-    "400x283"
+    "1200x1130",
+    "400x377"
   ],
   "min_label_px": 18,
   "point_px": 44,
@@ -53,11 +59,11 @@
   "five_second_test": {
     "by": "agent",
     "date": "2026-10-22",
-    "said": "Latest purchase 267 BTC is labeled on its bar; largest bar sits under the 40,000 gridline; per-share table limited to Jan-Feb 2025",
+    "said": "Latest purchase 267 BTC is labeled on its bar; sats/share has two tables: 8-K same-date counts in Jan-Feb 2025 and 10-Q/10-K cover counts through July 24, 2026 shown as low-high ranges",
     "result": "pass"
   },
   "warn_reasons": {
-    "phone": "400px export inspected; 97-period overview and source table require desktop or zoom. No phone-legibility claim.",
+    "phone": "400px export inspected: labels render at 6-15px, so the 97-period overview and both share tables need desktop or zoom. No phone-legibility claim.",
     "five-second test": "Agent self-test only; no human comprehension test or publication approval."
   },
   "annotations": [

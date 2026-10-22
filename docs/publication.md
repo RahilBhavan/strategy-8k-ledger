@@ -35,3 +35,7 @@ Before pushing, tracked source and all reachable history were scanned for creden
 This is a frozen October 21, 2026 research corpus, with distinct source-as-of, filing and UTC fetch dates. Discovery is recent-index scoped; overlapping amendments require review. Section citations are locators and need caller table/manifest integrity checks from a trusted Git pin. Filed precision is rounded; eleven exact known exceptions and five sale cost-relief inferences remain visible. No current sourced denominator, security certification, market-data calibration, web deployment or trade is claimed. The October 28 daily-dividend proposal remains pending at the snapshot. **No license file yet**; third-party source and font rights are attributed.
 
 The persistent objective was confirmed active through publication and source CI verification. Completion is recorded by the owning thread after the final receipt-tip checks.
+
+## Update 2026-10-22: license
+
+The MIT license was added in `LICENSE`. It covers this project's code only. Earlier statements in this record that no license file existed describe the state at publication.

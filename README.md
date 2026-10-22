@@ -94,6 +94,6 @@ SEC EDGAR CIK 1050446, plus 8 quarterly/annual cover-page share anchors. Review 
 
 ## License
 
-No license file yet. No license has been selected; third-party filings and font assets retain their own terms.
+[MIT](LICENSE). The license covers this project's code only. Third-party filings and font assets retain their own terms.
 
 Part of [Rahil Bhavan's projects](https://github.com/RahilBhavan).

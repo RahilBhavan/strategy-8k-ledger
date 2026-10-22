@@ -50,6 +50,9 @@ def select(period, accession=None, ticker=None, action=None, program=None):
             and (ticker is None or r['ticker'] == ticker)
             and (action is None or r.get('action') == action)
             and (program is None or r.get('program') == program)]
+    if not rows and not any(r['period_end'] == period for r in build.read('weekly.csv')):
+        from .summary import period_hint
+        raise ValueError(period_hint(period, build.read('weekly.csv')))
     if len(rows) != 1:
         raise ValueError(f'expected one observation, found {len(rows)} for {period}; '
                          'select accession/ticker/action/program explicitly')

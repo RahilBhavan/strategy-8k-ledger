@@ -1,8 +1,12 @@
 # Five-minute evidence and comparison walkthrough
 
 Python 3.11+, stdlib only; run from the repository root at a reviewed Git pin.
-No accounts, API keys or network are needed. JSON goes to stdout; selection,
-integrity and denominator errors go to stderr with exit code 2 and no partial JSON.
+No accounts, API keys or network are needed. Each command prints a short summary
+(value, units, period, filing URL and the normalized line that holds the value);
+add `--json` for the full report with every source line. Selection, integrity and
+denominator errors go to stderr with exit code 2 and no partial output. A date that
+is not a period end names the period that contains it; `python -m ledger periods`
+and `python -m ledger fields` list valid inputs.
 
 ```bash
 python -m ledger restore

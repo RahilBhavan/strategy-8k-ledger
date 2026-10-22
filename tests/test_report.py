@@ -16,7 +16,7 @@ class ReportTests(unittest.TestCase):
     def command(self, *args):
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
-            self.assertEqual(cli.main(list(args)), 0)
+            self.assertEqual(cli.main(list(args) + ['--json']), 0)
         return json.loads(out.getvalue())
 
     def test_real_period_comparison_retains_both_exact_sources(self):
@@ -125,3 +125,50 @@ class ReportTests(unittest.TestCase):
         first = subprocess.check_output(cmd, cwd=edgar.ROOT)
         self.assertEqual(first, subprocess.check_output(cmd, cwd=edgar.ROOT))
         self.assertEqual(before, [p.read_bytes() for p in paths])
+
+    def run_cli(self, *args):
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            try:
+                code = cli.main(list(args))
+            except SystemExit as e:
+                code = e.code
+        return code, out.getvalue(), err.getvalue()
+
+    def test_default_output_is_short_summary_with_value_first(self):
+        code, out, _ = self.run_cli('evidence', '--period', '2026-10-18', '--field', 'btc_held')
+        lines = out.splitlines()
+        self.assertEqual(code, 0)
+        self.assertEqual(lines[0], 'btc_held = 848,517 BTC')
+        self.assertLess(len(lines), 10)
+        self.assertIn('mstr-20261019.htm', out)
+        self.assertIn('value at line 55: 267 | 22.1 | 82,900 | 848,517', out)
+        code, out, _ = self.run_cli('compare', '--period', '2026-10-18', '--against-period', '2026-10-11')
+        self.assertTrue(out.startswith('btc_held: 848,250 BTC -> 848,517 BTC (change +267 BTC); changed'))
+        code, out, _ = self.run_cli('trace', '--period', '2026-10-18', '--ticker', 'MSTR',
+                                    '--action', 'atm_sale', '--field', 'amount_usd')
+        self.assertTrue(out.startswith('amount_usd for MSTR atm_sale (MSTR Stock) = $22,000,000\n'))
+
+    def test_json_flag_keeps_full_machine_report(self):
+        code, out, _ = self.run_cli('evidence', '--period', '2026-10-18', '--field', 'btc_held', '--json')
+        self.assertEqual(json.loads(out), evidence.cite(
+            next(r for r in build.read('weekly.csv') if r['period_end'] == '2026-10-18'), 'btc_held'))
+
+    def test_period_miss_names_containing_or_nearest_period(self):
+        for args in [('evidence', '--period', '2026-03-14'), ('trace', '--period', '2026-03-14')]:
+            code, out, err = self.run_cli(*args)
+            self.assertEqual((code, out), (2, ''))
+            self.assertIn('inside the period ending 2026-03-15: use --period 2026-03-15', err)
+            self.assertIn('python -m ledger periods', err)
+        code, _, err = self.run_cli('evidence', '--period', '2024-06-01')
+        self.assertIn('nearest period ends: 2025-01-05', err)
+
+    def test_periods_and_fields_listings(self):
+        code, out, _ = self.run_cli('periods')
+        self.assertEqual(code, 0)
+        self.assertTrue(out.startswith('97 reporting periods'))
+        self.assertIn('2026-03-09  2026-03-15', out)
+        code, out, _ = self.run_cli('fields')
+        for name in ('btc_held', 'usd_reserve', 'amount_usd', 'available_usd'):
+            self.assertIn(name, out)
+

@@ -1,10 +1,10 @@
 # Strategy 8-K ledger: trace weekly treasury fields to SEC filings
 
+Strategy (formerly MicroStrategy) reports its bitcoin buying to the SEC every week; this tool turns those reports into checked tables where every number links back to the filing it came from.
+
 [![CI](https://github.com/RahilBhavan/strategy-8k-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/RahilBhavan/strategy-8k-ledger/actions/workflows/ci.yml)
 
-![Strategy purchased 267 BTC in the latest period; only five early periods have same-date filed denominators for sats per basic share.](figures/sunday-tracker@2x.png)
-
-The sats/share table stops at February 23, 2025: weekly 8-Ks printed a same-date basic share count only in January–February 2025, so later ratios are not computed.
+![Strategy purchased 267 BTC in the latest period. Sats per basic share comes from five same-date weekly 8-K share counts in early 2025, then six 10-Q/10-K cover share counts through July 24, 2026, each shown as a range.](figures/sunday-tracker@2x.png)
 
 A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining capacity, repurchases and disclosed USD balances. The frozen corpus contains 97 period rows from 93 weekly updates, through the October 19, 2026 filing. Values retain source URLs and dates; consistency checks expose rounding exceptions instead of silently correcting them.
 
@@ -13,7 +13,7 @@ A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining c
 - Reads 147 candidate 8-K/8-K/A filings filed January 6, 2025–October 19, 2026; writes 97 period rows and 432 instrument/program/action rows. See `data/filings.csv`, `weekly.csv` and `instrument_weekly.csv` after restore/build.
 - Latest period, October 12–18: 267 BTC purchased, 848,517 BTC held, $22M MSTR ATM net proceeds and $4.83B USD Reserve. See `data/weekly.csv` and [primary filing](https://www.sec.gov/Archives/edgar/data/1050446/000119312526424688/mstr-20261019.htm).
 - Checks holdings/cost rolls, dates, stated averages, ATM totals and authorization rolls. No unexplained breaks in the frozen corpus; known exceptions remain visible in `data/checks.csv`.
-- Produces a purchase/sale chart and 5 sats/basic-share ratios with same-date filed denominators in January–February 2025. The separate inherited share roll-forward is a labeled model, excluded from this chart and Ask Filings.
+- Produces a purchase/sale chart and a sats-per-basic-share table. Weekly 8-Ks printed a basic share count only from January 12 to February 23, 2025, so the 8-K rows stop there. Six later rows use the share count on each 10-Q/10-K cover page, paired with the 8-K holdings for the weeks ending before and after the cover date. The latest is July 24, 2026 (Q2 2026 10-Q, accession 0001050446-26-000044): 384,225,751 basic shares, 843,775 BTC, 219,603.97 sats per basic share. See `data/sourced_sats.csv` and `data/cover_sats.csv`.
 
 ## How it works
 
@@ -35,7 +35,7 @@ python -m ledger diff
 python -m ledger evidence --period 2026-10-18 --field btc_held
 ```
 
-`restore` rebuilds the CSVs from the frozen shards; `hydrate` unpacks the original filings into `data/raw/`. The evidence command prints a short answer; add `--json` for every source line and hash:
+`restore` rebuilds the CSVs from the frozen shards; `hydrate` unpacks the original filings. The evidence command prints a short answer; add `--json` for every source line and hash:
 
 ```text
 btc_held = 848,517 BTC
@@ -63,17 +63,17 @@ ATM sales (net proceeds; capacity = remaining "available for issuance and sale")
 Consistency checks for this filing: all OK
 ```
 
-Observed: **58 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
+Observed: **60 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests and demo are offline, including an empty source cache. Python 3.13.7 is pinned in CI. There is no separate typechecker; CI also compiles every Python module.
 
 `build --refresh` opts into live discovery and needs an identifying `SEC_USER_AGENT` containing a contact email. It does not rewrite frozen shards until `snapshot` is explicitly run. SEC failures or changed hashes refuse; no substitute data is generated. For consumer pins and trust boundaries, see the [v1 dependency contract](docs/dependency-contract.md).
 
-Optional PNG export (requires `uv` and an installed Playwright Chromium; no account). A fresh browser download was not exercised; the local installed browser was used:
+Optional PNG export (requires `uv` and an installed Playwright Chromium):
 
 ```bash
 UV_CACHE_DIR=$HOME/scratch/strategy-8k-ledger/uvcache uv run --with playwright==1.63.0 python scripts/render_chart.py
 ```
 
-The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts; system sans-serif is the fallback. The generated PNG above is committed; SVG/HTML exports can be rebuilt locally. The chart is reviewed at 1200×850; the dense 400px overview needs zoom.
+The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts. The PNG above is committed; `python -m ledger chart` rebuilds the SVG/HTML. The chart is reviewed at 1200×1130.
 
 `trace` selects weekly or instrument evidence; `compare` reports explicit period
 pairs and independently replayed filings, retaining both sides and missing values.
@@ -112,14 +112,15 @@ python -m ledger trace --period 2026-10-18 --ticker MSTR --action atm_sale --fie
 
 ## Sources
 
-SEC EDGAR CIK 1050446, plus 8 quarterly/annual cover-page share anchors. Review as of October 21, 2026; latest economic date October 18. All 184 cached resources are hashed in the frozen manifest. Primary pages were spot-checked, not every filing manually reviewed. See [source review](docs/sources.md). The client/block-parser approach adapts Rahil’s dat-accretion work; see attribution in the method. Third-party filings retain their own rights.
+SEC EDGAR CIK 1050446: weekly 8-Ks plus the cover pages of the eight 10-Q/10-K filings since October 2024 (latest: Q2 2026 10-Q, filed August 3, 2026). Review as of October 21, 2026; latest economic date October 18. All 184 cached resources are hashed in the frozen manifest. See [source review](docs/sources.md). The client/block-parser approach adapts Rahil’s dat-accretion work; see attribution in the method. Third-party filings retain their own rights.
 
 ## Scope and limits
 
 - Independent local research, not affiliated with Strategy. No scheduler, trades or web deployment.
 - Recent submissions index only; no claim of complete historical discovery. Overlapping/amended weekly periods and conflicting tables refuse pending review; new layouts require review.
-- Filed rounded values are not audited transaction-level records. Blank means missing/inapplicable.
-- No current sourced weekly denominator: no current sats/share ratio is fabricated. The model does not capture all share flows.
+- Filed rounded values are not audited transaction-level records. Blank means missing/inapplicable. Primary pages were spot-checked, not every filing manually reviewed.
+- Sats per share after February 2025 uses quarterly cover share counts, so it updates only when a 10-Q or 10-K is filed. The holdings come from the 8-K weeks either side of the share date, so each row is a range, not a same-date figure. No current weekly ratio is computed.
+- The separate share roll-forward (`data/sats_per_share.csv`) is a labeled model that misses some share flows; it is not used in the chart or Ask Filings.
 - October 28 daily-dividend proposal remains pending as of October 21; no enactment assumption.
 
 ## License

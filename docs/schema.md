@@ -1,4 +1,4 @@
-# Data schema · v1.0.0
+# Data schema · v1.1.0
 
 Purpose: the column contract for every CSV in `data/`, for people and agents that read them (the issuance-router scenario comparison and deterministic filings CLI). Rebuild with `python -m ledger all`.
 
@@ -79,3 +79,7 @@ Every 8-K and 8-K/A filed since 2025-01-01 and what happened to it: `status` = `
 ## `data/sourced_sats.csv`
 
 Five same-date filed weekly basic-share denominators only: `period_end`, `btc_held`, `basic_shares`, `sats_per_basic_share`, `doc_url`, `filed`. Ratio = BTC held × 100,000,000 / basic shares, rounded to 0.01 sats for display. This precision is arithmetic, not source precision. The main chart and Ask Filings use this source rule instead of the cover-page roll-forward model.
+
+## `data/cover_sats.csv`
+
+Added in schema 1.1.0. One row per 10-Q/10-K cover date whose holdings can be bounded from filed weekly figures: `share_as_of`, `share_form`, `share_accession`, `share_filed`, `share_url`, `basic_shares` (cover-page class A + class B), `before_period_end`, `btc_held_before`, `before_url` (the weekly period ending on or before the cover date), `after_period_end`, `btc_held_after`, `after_btc_sold`, `after_url` (the next period, which must start the next day and state zero BTC sold), `sats_low` and `sats_high` (each `btc_held` x 100,000,000 / `basic_shares`, rounded to 0.01 sats). Holdings and share counts come from different filings and dates; read the pair as a range, not a same-date figure.

@@ -58,6 +58,8 @@ The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts; syst
 
 ## Documentation
 
+- [Public design system](DESIGN.md): Rahil Design 3.3.0, shared tokens and visual review rules.
+
 - [Spec](docs/spec.md): accepted v1 and criteria.
 - [Method](docs/method.md): fetching and strict parsing.
 - [Schema](docs/schema.md): field definitions and units.

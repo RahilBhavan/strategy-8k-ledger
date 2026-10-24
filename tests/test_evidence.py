@@ -74,6 +74,34 @@ class EvidenceTests(unittest.TestCase):
         self.assertNotIn('2026-10-18', [r['period_end'] for r in sats])
         self.assertEqual(chart.sourced_sats([weeks[-1]]), [])
 
+    def test_cover_sats_bracket_share_date_with_filed_holdings(self):
+        weeks, anchors = build.read('weekly.csv'), build.read('share_anchors.csv')
+        rows = chart.cover_sats(weeks, anchors)
+        self.assertEqual([r['share_as_of'] for r in rows],
+                         ['2025-05-02', '2025-07-31', '2025-10-30', '2026-02-13', '2026-04-26', '2026-07-24'])
+        for r in rows:
+            with self.subTest(share_as_of=r['share_as_of']):
+                self.assertLessEqual(r['before_period_end'], r['share_as_of'])
+                self.assertLess(r['share_as_of'], r['after_period_end'])
+                self.assertEqual(r['after_btc_sold'], '0')
+                self.assertLessEqual(float(r['sats_low']), float(r['sats_high']))
+        last = rows[-1]
+        self.assertEqual((last['basic_shares'], last['share_accession'], last['btc_held_before'], last['sats_low'],
+                          last['sats_high']), ('384225751', '0001050446-26-000044', '843775', '219603.97', '219603.97'))
+        self.assertEqual(rows, build.read('cover_sats.csv'))
+
+    def test_cover_sats_refuses_unbounded_holdings(self):
+        weeks, anchors = build.read('weekly.csv'), build.read('share_anchors.csv')
+        july = next(a for a in anchors if a['as_of'] == '2026-07-24')
+        i = next(i for i, w in enumerate(weeks) if w['period_end'] > july['as_of'])
+        for change in ({'btc_sold': ''}, {'btc_sold': '5'}, {'period_start': '2026-07-21'}):
+            with self.subTest(change=change):
+                mutated = weeks[:i] + [{**weeks[i], **change}] + weeks[i+1:]
+                self.assertEqual(chart.cover_sats(mutated, [july]), [])
+        self.assertEqual(chart.cover_sats(weeks[:i], [july]), [])
+        early = next(a for a in anchors if a['as_of'] == '2024-10-21')
+        self.assertEqual(chart.cover_sats(weeks, [early]), [])
+
     def test_no_user_agent_without_contact(self):
         with self.assertRaises(ValueError):
             edgar.SECClient('unnamed')

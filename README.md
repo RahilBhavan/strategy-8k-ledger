@@ -70,7 +70,7 @@ Observed: **60 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests
 Optional PNG export (requires `uv` and an installed Playwright Chromium):
 
 ```bash
-UV_CACHE_DIR=$HOME/scratch/strategy-8k-ledger/uvcache uv run --with playwright==1.63.0 python scripts/render_chart.py
+uv run --with playwright==1.63.0 python scripts/render_chart.py
 ```
 
 The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts. The PNG above is committed; `python -m ledger chart` rebuilds the SVG/HTML. The chart is reviewed at 1200×1130.

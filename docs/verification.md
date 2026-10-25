@@ -42,3 +42,7 @@ Tufte checks: shared linear BTC scale, bars at zero, proportional heights, actua
 Source hashes and schema contracts rely on the trusted reviewed Git pin. Section citations do not attest arbitrary caller-provided values. Failed builds can leave old output files; concurrent builds and power-interrupted multi-file output writes are unsupported. Automatic amendment supersession, exhaustive SEC-history discovery, fresh live network recovery, fresh browser installation, audited financial accuracy and security certification are unclaimed.
 
 GitHub default-branch, fresh remote clone and CI evidence are recorded separately in [publication.md](publication.md) after execution.
+
+## Re-check 2026-10-24
+
+Earlier counts in this file and in `publication.md` describe earlier commits. At `e5877e7` in a fresh clone on Python 3.14.7: `restore`, `hydrate` (184 resources) and `scripts/verify_contract.py` passed; **60 tests pass**; `all`, `diff`, `evidence`, `trace`, `compare` and `compileall` ran without error. All 156 distinct SEC URLs in `data/filings.csv` and `data/cover_sats.csv` returned HTTP 200 to read-only GETs with a User-Agent header. The 9 `KNOWN_EXCEPTION` roll rows in `data/checks.csv` are unchanged. The optional PNG export was not re-run (needs Playwright Chromium).

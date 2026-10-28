@@ -8,6 +8,8 @@ Strategy (formerly MicroStrategy) reports its bitcoin buying to the SEC every we
 
 A local Python CLI extracts Strategy's weekly bitcoin, ATM issuance, remaining capacity, repurchases and disclosed USD balances. The frozen corpus contains 97 period rows from 93 weekly updates, through the October 19, 2026 filing. Values retain source URLs and dates; consistency checks expose rounding exceptions instead of silently correcting them.
 
+Compared with [dat-accretion](https://github.com/RahilBhavan/dat-accretion): this repo is a Strategy-only, frozen provenance corpus (every value traced to its 8-K); dat-accretion is the multi-company per-share engine built on filings like these.
+
 ## What it does
 
 - Reads 147 candidate 8-K/8-K/A filings filed January 6, 2025–October 19, 2026; writes 97 period rows and 432 instrument/program/action rows. See `data/filings.csv`, `weekly.csv` and `instrument_weekly.csv` after restore/build.

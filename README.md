@@ -123,7 +123,7 @@ SEC EDGAR CIK 1050446: weekly 8-Ks plus the cover pages of the eight 10-Q/10-K f
 - Filed rounded values are not audited transaction-level records. Blank means missing/inapplicable. Primary pages were spot-checked, not every filing manually reviewed.
 - Sats per share after February 2025 uses quarterly cover share counts, so it updates only when a 10-Q or 10-K is filed. The holdings come from the 8-K weeks either side of the share date, so each row is a range, not a same-date figure. No current weekly ratio is computed.
 - The separate share roll-forward (`data/sats_per_share.csv`) is a labeled model that misses some share flows; it is not used in the chart or Ask Filings.
-- October 28 daily-dividend proposal remains pending as of October 21; no enactment assumption.
+- October 28 daily-dividend proposal remains pending as of October 21; no enactment assumption. Update, October 28, 2026: Strategy's [8-K filed October 28](https://www.sec.gov/Archives/edgar/data/1050446/000119312526435451/mstr-20261028.htm) (accession 0001193125-26-435451, Item 8.01) reports that, based on preliminary voting results, the requisite vote was obtained to adopt the amended certificates of designations permitting daily dividends, subject to their filing and effectiveness (STRC from November 1, 2026; STRF, STRK and STRD from January 1, 2027). This repository's snapshot, outputs and defaults stay frozen at October 21 and are not recomputed.
 
 ## License
 

@@ -1,0 +1,7 @@
+# Helper-script dependencies (scripts/render_chart.py only). The ledger CLI,
+# tests and scripts/verify_contract.py are stdlib-only and need none of this.
+# Direct pin, then its transitive pins resolved with `uv pip compile` (Python 3.11+).
+playwright==1.63.0
+greenlet==3.5.6
+pyee==13.0.1
+typing-extensions==4.16.0

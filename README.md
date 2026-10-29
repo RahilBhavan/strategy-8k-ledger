@@ -69,11 +69,17 @@ Observed: **60 tests pass** on Python 3.14.7. The frozen restore, hydrate, tests
 
 `build --refresh` opts into live discovery and needs an identifying `SEC_USER_AGENT` containing a contact email. It does not rewrite frozen shards until `snapshot` is explicitly run. SEC failures or changed hashes refuse; no substitute data is generated. For consumer pins and trust boundaries, see the [v1 dependency contract](docs/dependency-contract.md).
 
-Optional PNG export (requires `uv` and an installed Playwright Chromium):
+Optional PNG export needs Playwright, pinned in [requirements-dev.txt](requirements-dev.txt). The CLI, tests and SVG chart stay stdlib-only. The script reads `figures/card.html`, which `python -m ledger chart` (or `all`) writes; run that first.
 
 ```bash
-uv run --with playwright==1.63.0 python scripts/render_chart.py
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m playwright install chromium   # one-time browser download
+python -m ledger chart
+.venv/bin/python scripts/render_chart.py
 ```
+
+On Linux, `python -m playwright install --with-deps chromium` also installs the system libraries (needs root).
 
 The SVG/HTML embeds the bundled OFL-licensed Anton and IBM Plex Sans fonts. The PNG above is committed; `python -m ledger chart` rebuilds the SVG/HTML. The chart is reviewed at 1200×1130.
 
